@@ -1,6 +1,9 @@
 
 import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
+import AppAppBar from './components/AppBar';
+import Hero from './components/hero';
 import axios from 'axios'
+import { AppBar } from '@mui/material';
 
 function App() {
   const responseGoogle = (response) =>{
@@ -20,7 +23,8 @@ function App() {
     <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENTID}>
     <div>
       <div className="App">
-        <h1>LinkMe</h1>
+      <AppBar />
+      <Hero />
         <GoogleLogin
           onError={responseError}
           clientId={process.env.REACT_APP_CLIENTID}
