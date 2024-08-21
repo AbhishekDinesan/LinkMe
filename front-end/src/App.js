@@ -2,6 +2,7 @@ import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import Hero from './components/hero';
 import axios from 'axios';
 import MenuAppBar from './components/AppBar';
+import Button from '@mui/material/Button';
 
 function App() {
   return (
@@ -9,14 +10,13 @@ function App() {
       <div className="App">
         <MenuAppBar />
         <Hero />
-        <GoogleLoginButton />
       </div>
     </GoogleOAuthProvider>
   );
 }
 
 
-function GoogleLoginButton() {
+export function GoogleLoginButton() {
   const googleLogin = useGoogleLogin({
     flow: 'auth-code',
     scope: 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar.events',
@@ -37,7 +37,7 @@ function GoogleLoginButton() {
     },
   });
   return (
-    <button onClick={() => googleLogin()}>Login with Google</button>
+    <Button variant="contained" color="primary" onClick={() => googleLogin()}>Login</Button>
   );
 }
 

@@ -7,6 +7,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { GoogleLoginButton } from '../App';
 
 export default function Hero() {
   return (
@@ -82,9 +83,7 @@ export default function Hero() {
                 'aria-label': 'Enter your email address',
               }}
             />
-            <Button variant="contained" color="primary">
-              Start now
-            </Button>
+            <GoogleLoginButton />
           </Stack>
           <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
             By clicking &quot;Start now&quot; you agree to our&nbsp;
