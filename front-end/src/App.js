@@ -1,46 +1,40 @@
-
-import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
-import AppAppBar from './components/AppBar';
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import Hero from './components/hero';
-import axios from 'axios'
-import { AppBar } from '@mui/material';
+import axios from 'axios';
+import MenuAppBar from './components/AppBar';
 
 function App() {
-  const responseGoogle = (response) =>{
-    console.log("This is the response",  response)
-    const { credential } = response;
-    console.log("This is the code", credential)
-    axios.post('/api/create-tokens', {credential})
-    .then(response =>{console.log(response.data)})
-    .catch(error=>console.log(error.message))
-  };
-
-  const responseError = error =>{
-    console.log(error)
-  }
-
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENTID}>
-    <div>
       <div className="App">
-      <AppBar />
-      <Hero />
-        <GoogleLogin
-          onError={responseError}
-          clientId={process.env.REACT_APP_CLIENTID}
-          buttonText="Login with Google"
-          onSuccess={responseGoogle}
-          onFailure={responseError}
-          cookiePolicy={'single_host_origin'}
-          responseType="code" // Request authorization code
-          accessType="offline" // Request refresh token
-          useOneTap
-        />
+        <MenuAppBar />
+        <Hero />
+        <GoogleLoginButton />
       </div>
-    </div>
     </GoogleOAuthProvider>
   );
 }
 
-export default App;
+function GoogleLoginButton() {
+  const googleLogin = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: async (response) => {
+      console.log("This is the authorization code response", response);
+      const { code } = response;
+      try {
+        const serverResponse = await axios.post('/api/create-tokens', { code });
+        console.log('Tokens:', serverResponse.data);
+      } catch (error) {
+        console.error('Error exchanging authorization code:', error.message);
+      }
+    },
+    onError: (error) => {
+      console.error('Login Failed:', error);
+    },
+  });
+  return (
+    <button onClick={() => googleLogin()}>Login with Google</button>
+  );
+}
 
+export default App;
