@@ -1,8 +1,7 @@
 const express = require('express');
 const router = require('express').Router();
-const { OAuth2Client } = require('google-auth-library');
+const {google} = require('googleapis');
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const app = express();
 app.use(express.json());
@@ -13,17 +12,21 @@ router.get('/', async(req, res, next) => {
     });
 });
 
+const oauth2Client = new google.auth.OAuth2(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_REDIRECT_URI
+  );
+
 router.post('/create-tokens', async (req, res, next) => {
     try {
-        const { credential } = req.body; 
-        console.log('Credential received:', credential);
-        const ticket = await client.verifyIdToken({
-            idToken: credential,
-            audience: process.env.GOOGLE_CLIENT_ID,
-        }); 
-        const payload = ticket.getPayload();
-        console.log('Payload:', payload);
-        res.send({ message: "Token verified successfully", credential});
+        const { code } = req.body; 
+        console.log('Code received:', code);
+        const {tokens} = await oauth2Client.getToken(code) 
+        const refresh_token = tokens.refresh_token; // need database logic
+        console.log('Just the refresh token:', refresh_token);
+        oauth2Client.setCredentials(tokens);
+        res.send({ message: "Tokens set successfully", tokens });
     } catch (error) {
         console.error('Error occurred:', error);
         next(error);
