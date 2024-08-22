@@ -41,6 +41,7 @@ export function GoogleLoginButton() {
   );
 }
 
+
 async function addEventToCalendar(accessToken) {
   try {
     const event = {
