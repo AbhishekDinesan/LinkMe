@@ -1,22 +1,28 @@
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Hero from './components/hero';
 import axios from 'axios';
 import MenuAppBar from './components/AppBar';
 import Button from '@mui/material/Button';
+import Dashboard from './components/SuccessPage';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENTID}>
-      <div className="App">
+       <Router>
         <MenuAppBar />
-        <Hero />
-      </div>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/dashboard" element={<Dashboard />} />  // Your target page component
+        </Routes>
+      </Router>
     </GoogleOAuthProvider>
   );
 }
 
-
 export function GoogleLoginButton() {
+  const navigate = useNavigate();
   const googleLogin = useGoogleLogin({
     flow: 'auth-code',
     scope: 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar.events',
@@ -27,7 +33,7 @@ export function GoogleLoginButton() {
         const serverResponse = await axios.post('/api/create-tokens', { code });
         console.log('Tokens:', serverResponse.data);
         const { access_token } = serverResponse.data.tokens;
-        addEventToCalendar(access_token);
+        navigate('/dashboard');
       } catch (error) {
         console.error('Error exchanging authorization code:', error.message);
       }
@@ -42,37 +48,5 @@ export function GoogleLoginButton() {
 }
 
 
-async function addEventToCalendar(accessToken) {
-  try {
-    const event = {
-      summary: 'Sample Event',
-      location: '123 Main St, Anytown, USA',
-      description: 'This is a sample event.',
-      start: {
-        dateTime: '2024-08-21T09:00:00-07:00',
-        timeZone: 'America/Los_Angeles',
-      },
-      end: {
-        dateTime: '2024-08-21T17:00:00-07:00',
-        timeZone: 'America/Los_Angeles',
-      },
-    };
-
-    const response = await axios.post(
-      'https://www.googleapis.com/calendar/v3/calendars/primary/events',
-      event,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    console.log('Event created:', response.data);
-  } catch (error) {
-    console.error('Error creating event:', error.message);
-  }
-}
 
 export default App;
