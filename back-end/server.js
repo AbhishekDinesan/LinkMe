@@ -14,18 +14,37 @@ const client = new Client({
 });
 
 
-client.connect();
+async function insertRefreshToken(token, expiresAt) {
+  try {
+    const query = `
+      INSERT INTO refresh_tokens (token, expires_at)
+      VALUES ($1, $2)
+      RETURNING *;
+    `;
+    const values = [token, expiresAt];
 
-client.query(`SELECT * FROM test_table`, (err, res)=> {
-  if(!err){
-    console.log(res.rows)
+    const result = await client.query(query, values);
+    console.log('Refresh token inserted:', result.rows[0]);
+  } catch (err) {
+    console.error('Error inserting refresh token:', err);
   }
-  else{
-    console.log(err.message);
-  }
-  client.end();
-})
+}
 
+async function runQueries() {
+  try {
+    await client.connect();
+    await insertRefreshToken('your_refresh_token', '2024-12-31 23:59:59');
+    const res = await client.query('SELECT * FROM refresh_tokens');
+    console.log('Refresh tokens:', res.rows);
+  } catch (err) {
+    console.error(err.message);
+  } finally {
+    // Close the connection after all queries are done
+    await client.end();
+  }
+}
+
+runQueries();
 
 app.use(express.json())
 
@@ -42,7 +61,5 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
-
-
 
 app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}.`));
