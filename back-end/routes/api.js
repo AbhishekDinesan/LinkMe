@@ -1,6 +1,7 @@
 const express = require('express');
 const router = require('express').Router();
 const {google} = require('googleapis');
+const { insertRefreshToken } = require('../db'); // Import the insert function
 
 
 const app = express();
@@ -12,27 +13,42 @@ router.get('/', async(req, res, next) => {
     });
 });
 
+router.get('/add-event', async(req, res, next) => {
+    res.send({
+        message: "api route is working"
+    });
+});
+
 const oauth2Client = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
     process.env.GOOGLE_REDIRECT_URI
   );
 
+
 router.post('/create-tokens', async (req, res, next) => {
     try {
         const { code } = req.body; 
         console.log('Code received:', code);
-        const {tokens} = await oauth2Client.getToken(code) 
-        const refresh_token = tokens.refresh_token; // need database logic
+
+        // Exchange the authorization code for tokens
+        const { tokens } = await oauth2Client.getToken(code);
+        const refresh_token = tokens.refresh_token; 
         console.log('Just the refresh token:', refresh_token);
+
+        // Insert the refresh token into the database
+        const expiresAt = new Date(Date.now() + 60 * 60 * 24 * 30 * 1000); // Example expiry (30 days)
+        await insertRefreshToken(refresh_token, expiresAt);
+
+        // Set the credentials in OAuth client
         oauth2Client.setCredentials(tokens);
+
         res.send({ message: "Tokens set successfully", tokens });
     } catch (error) {
         console.error('Error occurred:', error);
         next(error);
     }
 });
-
 
 module.exports = router
 
