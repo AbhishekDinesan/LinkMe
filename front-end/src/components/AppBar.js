@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: '#0053a5' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -21,8 +21,8 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h5" component="div" textAlign = 'center' sx={{ flexGrow: 1 }}>
-            Link Me.
+          <Typography variant="h5" component="div" textAlign = 'center' sx={{ flexGrow: 1, fontWeight: 'bold', }}>
+          🔗 LinkMe.
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

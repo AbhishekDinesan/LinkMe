@@ -5,14 +5,16 @@ import TextField from '@mui/material/TextField';
 import BasicDatePicker from './DatePicker';
 import BasicTimePicker from './TimePicker';
 import BasicButton from './basicButton';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 
 function Dashboard() {
   const [formData, setFormData] = useState({ // hook for the form
     eventName: '',
     eventDescription: '',
-    startEvent: '',
-    endEvent: '',
+    startEvent: dayjs(),
+    endEvent: dayjs(),
     startTime: '',
     endTime: '',
   });
@@ -25,19 +27,24 @@ function Dashboard() {
   };
   
   const handleSubmit = async (e) => {
+    console.log('Form data being sent:', formData);
     e.preventDefault();
+    const formattedFormData = {
+      ...formData,
+      startEvent: formData.startEvent?.toISOString().split('T')[0],  // Convert to YYYY-MM-DD
+      endEvent: formData.endEvent?.toISOString().split('T')[0],      // Convert to YYYY-MM-DD
+      startTime: formData.startTime?.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }), // HH:MM format
+      endTime: formData.endTime?.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),    // HH:MM format
+    };
     try {
-      const response = await fetch('/create-event', {
-        method: 'POST',
+      const response = await axios.post('/api/create-event', formattedFormData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      console.log('Event created:', data);
+      console.log('Event created:', response.data);
     } catch (error) {
-      console.error('Error creating event:', error);
+      console.error('Error creating event:', error.message);
     }
   };
   
@@ -49,16 +56,16 @@ function Dashboard() {
     onSubmit={handleSubmit}
   >
     <TextField id="outlined-basic" label="Event Name" variant="standard" name="eventName" value={formData.eventName} onChange={handleChange}/>
-    <TextField id="outlined-basic" label="Event Description" variant="standard" name="description" value={formData.eventName} onChange={handleChange} />
-    <BasicDatePicker labelName={"Start Event"}   value={formData.endEvent}
-      onChange={(date) => setFormData({ ...formData, endEvent: date })} />
+    <TextField id="outlined-basic" label="Event Description" variant="standard" name="eventDescription" value={formData.eventDescription} onChange={handleChange} />
+    <BasicDatePicker labelName={"Start Event"}   value={formData.startEvent}
+      onChange={(date) => setFormData({ ...formData, startEvent: date })} />
     <BasicDatePicker labelName={"End Event"} value={formData.endEvent}
       onChange={(date) => setFormData({ ...formData, endEvent: date })}/>
     <BasicTimePicker labelName={"Start Time"} value={formData.startTime}
       onChange={(time) => setFormData({ ...formData, startTime: time })}  />
     <BasicTimePicker labelName={"End Time"}value={formData.endTime}
       onChange={(time) => setFormData({ ...formData, endTime: time })}/>
-    <BasicButton buttonName={"Create Event"} />
+    <BasicButton buttonName={"Create Event"} type="submit"/>
   </Box>
   }
   

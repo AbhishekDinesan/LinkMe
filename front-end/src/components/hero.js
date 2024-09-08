@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { GoogleLoginButton } from '../App';
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
   return (
@@ -19,7 +20,7 @@ export default function Hero() {
           theme.palette.mode === 'light'
             ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
             : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
-        backgroundSize: '100% 20%',
+        backgroundSize: '100% 80%',
         backgroundRepeat: 'no-repeat',
       })}
     >
@@ -50,10 +51,15 @@ export default function Hero() {
               sx={{
                 fontSize: 'clamp(3rem, 10vw, 4rem)',
                 color: (theme) =>
-                  theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
+                  theme.palette.mode === 'light' ? 'primary.main' : 'primary.light', fontWeight: 'bold'
               }}
             >
-            tonight?
+            <TypeAnimation
+                sequence={['tonight?', 2000, 'tomorrow?', 2000, 'right now?', 2000]}
+                speed={10}
+                wrapper="span"
+                repeat={Infinity}
+              />
             </Typography>
           </Typography>
           <Typography
@@ -61,8 +67,15 @@ export default function Hero() {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           > 
-            LinkMe finds free time between you and your friends and matches you with local businesses and activities.
-            So you can spend more time doing, and less time planning.
+            LinkMe finds free time between you and your friends and finds you things to do. <br />
+            So you can spend more time{' '}
+          <Typography component="span" sx={{ fontWeight: 'bold' }}>
+               doing 
+        </Typography>
+            {' '}and less time {' '} 
+            <Typography component="span" sx={{ fontWeight: 'bold' }}>
+               planning.
+        </Typography> 
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -91,6 +104,12 @@ export default function Hero() {
               Terms & Conditions
             </Link>
             .
+          </Typography>
+          <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
+            <Link href="abhi.dinesan@linkme.com" color="primary">
+               Contact Us
+            </Link>
+            
           </Typography>
         </Stack>
       </Container>

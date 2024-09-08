@@ -6,6 +6,8 @@ import MenuAppBar from './components/AppBar';
 import Button from '@mui/material/Button';
 import Dashboard from './components/SuccessPage';
 import { useNavigate } from 'react-router-dom';
+import Footer from './components/FooterBar';
+import FooterBar from './components/FooterBar';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/" element={<Hero />} />
           <Route path="/dashboard" element={<Dashboard />} />  // Your target page component
         </Routes>
+        <FooterBar />
       </Router>
     </GoogleOAuthProvider>
   );
