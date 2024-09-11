@@ -6,11 +6,11 @@ async function addEventToCalendar(accessToken) {
         description: 'This is a sample event.',
         start: {
           dateTime: '2024-08-21T09:00:00-07:00',
-          timeZone: 'America/Los_Angeles',
+          timeZone: 'America/Toronto',
         },
         end: {
           dateTime: '2024-08-21T17:00:00-07:00',
-          timeZone: 'America/Los_Angeles',
+          timeZone: 'America/Toronto',
         },
       };
   

@@ -1,4 +1,5 @@
 const express = require('express');
+const apiRouter = require('../back-end/routes/api');
 require('dotenv').config();
 
 
@@ -6,7 +7,7 @@ const app = express();
 
 app.use(express.json())
 
-app.use('/api', require('./routes/api'))
+app.use('/api', apiRouter)
 
 app.use('/request-type', (req, res, next) => {
   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');

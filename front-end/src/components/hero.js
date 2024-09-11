@@ -67,7 +67,7 @@ export default function Hero() {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           > 
-            LinkMe finds free time between you and your friends and finds you things to do. <br />
+            🔗 LinkMe finds free time between you and your friends and finds you things to do. <br />
             So you can spend more time{' '}
           <Typography component="span" sx={{ fontWeight: 'bold' }}>
                doing 

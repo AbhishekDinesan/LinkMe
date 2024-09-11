@@ -50,5 +50,41 @@ router.post('/create-tokens', async (req, res, next) => {
     }
 });
 
+router.post('/create-event', async (req, res, next) => {
+    try {
+      console.log("is the endpoint even reached")
+      const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body;
+      console.log("yo startEvent"+ startEvent);
+      console.log("yo endEvent"+ endEvent);
+      console.log("yo startTime"+ startTime);
+      console.log("yo endTime"+ endTime);
+  
+      const event = {
+        summary: eventName,
+        description: eventDescription,
+        start: {
+          dateTime: `${startEvent}T${startTime}:00`,
+          timeZone: 'America/Toronto',
+        },
+        end: {
+          dateTime: `${endEvent}T${endTime}:00`,
+          timeZone: 'America/Toronto',
+        },
+      };
+  
+      const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+  
+      const response = await calendar.events.insert({
+        calendarId: 'primary',
+        resource: event,
+      });
+  
+      res.status(200).send(response.data);
+    } catch (error) {
+      console.error('Error creating event:', error);
+      next(error);
+    }
+  });
+
 module.exports = router
 

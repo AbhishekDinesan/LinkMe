@@ -6,17 +6,17 @@ import BasicDatePicker from './DatePicker';
 import BasicTimePicker from './TimePicker';
 import BasicButton from './basicButton';
 import axios from 'axios';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
 
 
 function Dashboard() {
   const [formData, setFormData] = useState({ // hook for the form
-    eventName: '',
-    eventDescription: '',
+    eventName: dayjs(),
+    eventDescription: dayjs(), 
     startEvent: dayjs(),
     endEvent: dayjs(),
-    startTime: '',
-    endTime: '',
+    startTime: dayjs(),
+    endTime: dayjs(),
   });
 
   const handleChange = (e) => {
@@ -31,10 +31,10 @@ function Dashboard() {
     e.preventDefault();
     const formattedFormData = {
       ...formData,
-      startEvent: formData.startEvent?.toISOString().split('T')[0],  // Convert to YYYY-MM-DD
-      endEvent: formData.endEvent?.toISOString().split('T')[0],      // Convert to YYYY-MM-DD
-      startTime: formData.startTime?.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }), // HH:MM format
-      endTime: formData.endTime?.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),    // HH:MM format
+      startEvent: formData.startEvent?.format('YYYY-MM-DD'),  // Convert to YYYY-MM-DD using dayjs
+      endEvent: formData.endEvent?.format('YYYY-MM-DD'),    // Convert to YYYY-MM-DD
+      startTime: formData.startTime?.format('HH:mm'), // HH:MM format
+      endTime: formData.endTime?.format('HH:mm'),    // HH:MM format
     };
     try {
       const response = await axios.post('/api/create-event', formattedFormData, {
