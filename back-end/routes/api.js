@@ -1,7 +1,7 @@
 const express = require('express');
 const router = require('express').Router();
 const {google} = require('googleapis');
-const { insertRefreshToken } = require('../db'); // Import the insert function
+const { insertRefreshToken } = require('../db'); 
 
 
 const app = express();
@@ -52,12 +52,7 @@ router.post('/create-tokens', async (req, res, next) => {
 
 router.post('/create-event', async (req, res, next) => {
     try {
-      console.log("is the endpoint even reached")
-      const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body;
-      console.log("yo startEvent"+ startEvent);
-      console.log("yo endEvent"+ endEvent);
-      console.log("yo startTime"+ startTime);
-      console.log("yo endTime"+ endTime);
+      const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body
   
       const event = {
         summary: eventName,
