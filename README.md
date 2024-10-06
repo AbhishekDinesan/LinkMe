@@ -12,3 +12,17 @@ Our goal is to synchronize your free time and connect you with exciting local ev
 - **Backend:** Node.js, Express
 - **Database:** PostgreSQL
 - **Google API:** Google Calendar API for syncing and scheduling
+
+## Structure
+
+### Back-End
+
+We are following the MVC architecture. 
+- Controllers are used to handle the logic behind incoming requests, intermediate between models & views , they parse requests and handle appopriately
+- Models are used for database interaction and business logic (CRUD Operations)
+- Routes define URL structures and map HTTP Methods to controllers
+- DB is for Database connectivity, Utilities is extra-stuff
+
+### Front-End
+
+

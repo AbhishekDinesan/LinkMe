@@ -2,15 +2,15 @@ import * as React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import BasicDatePicker from './DatePicker';
-import BasicTimePicker from './TimePicker';
-import BasicButton from './basicButton';
+import BasicDatePicker from '../components/DatePicker';
+import BasicTimePicker from '../components/TimePicker';
+import BasicButton from '../components/basicButton';
 import axios from 'axios';
 import dayjs from 'dayjs'
 
 
 function Dashboard() {
-  const [formData, setFormData] = useState({ // hook for the form
+  const [formData, setFormData] = useState({ 
     eventName: dayjs(),
     eventDescription: dayjs(), 
     startEvent: dayjs(),
@@ -31,10 +31,10 @@ function Dashboard() {
     e.preventDefault();
     const formattedFormData = {
       ...formData,
-      startEvent: formData.startEvent?.format('YYYY-MM-DD'),  // Convert to YYYY-MM-DD using dayjs
-      endEvent: formData.endEvent?.format('YYYY-MM-DD'),    // Convert to YYYY-MM-DD
-      startTime: formData.startTime?.format('HH:mm'), // HH:MM format
-      endTime: formData.endTime?.format('HH:mm'),    // HH:MM format
+      startEvent: formData.startEvent?.format('YYYY-MM-DD'),  
+      endEvent: formData.endEvent?.format('YYYY-MM-DD'),    
+      startTime: formData.startTime?.format('HH:mm'), 
+      endTime: formData.endTime?.format('HH:mm'),    
     };
     try {
       const response = await axios.post('/api/create-event', formattedFormData, {
@@ -71,4 +71,3 @@ function Dashboard() {
   
   export default Dashboard;
 
-  // summary, location, description, start datetime, timeZone, end dateTime, timeZone

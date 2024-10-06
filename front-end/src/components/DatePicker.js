@@ -11,7 +11,7 @@ function BasicDatePicker({ labelName, value, onChange }) {
       label={labelName}
       value={value}
       onChange={(newDate) => {
-        onChange(newDate); // Make sure the selected date is passed to the parent
+        onChange(newDate); 
       }}
       renderInput={(params) => <TextField {...params} />}
     />

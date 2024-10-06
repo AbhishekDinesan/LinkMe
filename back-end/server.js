@@ -2,7 +2,6 @@ const express = require('express');
 const apiRouter = require('../back-end/routes/api');
 require('dotenv').config();
 
-
 const app = express();
 
 app.use(express.json())

@@ -7,7 +7,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { GoogleLoginButton } from '../App';
+import { GoogleLoginButton } from '../components/GoogleLogin';
 import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
