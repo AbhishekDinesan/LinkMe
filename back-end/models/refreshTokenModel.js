@@ -1,4 +1,4 @@
-const client = require('../database/db')
+const pool = require('../database/db')
 
 async function insertRefreshToken(token, expiresAt) {
     try {
@@ -9,7 +9,7 @@ async function insertRefreshToken(token, expiresAt) {
       `;
       const values = [token, expiresAt];
   
-      const result = await client.query(query, values);
+      const result = await pool.query(query, values);
       console.log('Refresh token inserted:', result.rows[0]);
       return result.rows[0]; // Return the inserted row if needed
     } catch (err) {
