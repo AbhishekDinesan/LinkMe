@@ -16,7 +16,7 @@ function App() {
         <MenuAppBar title={"🔗 LinkMe."} />
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/dashboard" element={<Dashboard />} />  // Your target page component
+          <Route path="/dashboard" element={<Dashboard />} />  
         </Routes>
         <FooterBar />
       </Router>
