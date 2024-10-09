@@ -40,11 +40,13 @@ const createFreeTimeTable = `CREATE TABLE free_time (
 
 async function createTables() {
     try {
-    await pool.query(createUsersTable());
+    await pool.query(createUsersTable);
+    /*
     await pool.query(createEventsTable());
     await pool.query(createGroupTable());
     await pool.query(createUserGroupTable());
     await pool.query(createFreeTimeTable());
+    */
     console.log("Users table created successfully or already exists");
     } 
     catch (error) {
@@ -52,4 +54,4 @@ async function createTables() {
     }
 }
   
-createTables();
+module.exports = {createTables}
