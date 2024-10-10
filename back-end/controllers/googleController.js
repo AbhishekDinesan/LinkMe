@@ -16,7 +16,6 @@ exports.retrieveGoogleID = async() =>{
 }
 
 async function fetchUserCalendarEvents(userId) {
-  // Fetch the stored refresh token for the user from your database
   const storedRefreshToken = await getRefreshTokenForUser(userId); // Implement this function
 
   if (!storedRefreshToken) {

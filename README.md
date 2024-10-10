@@ -25,4 +25,7 @@ We are following the MVC architecture.
 
 ### Front-End
 
+We are following basic react-project structure.
+- pages and components centric
+
 
