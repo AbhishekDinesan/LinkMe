@@ -48,6 +48,7 @@ function Dashboard() {
         },
       });
       console.log('Event created:', response.data);
+      console.log(response2);
     } catch (error) {
       console.error('Error creating event:', error.message);
     }

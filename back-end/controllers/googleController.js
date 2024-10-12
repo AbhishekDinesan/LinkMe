@@ -31,11 +31,11 @@ async function fetchUserCalendarEvents(userId) {
 
   try {
     const response = await calendar.events.list({
-      calendarId: 'primary', // 'primary' is the user's primary calendar
-      timeMin: new Date().toISOString(), // You can set a specific time range if needed
-      maxResults: 100, // Number of events to fetch
-      singleEvents: true, // Expand recurring events into instances
-      orderBy: 'startTime', // Order events by start time
+      calendarId: 'primary', 
+      timeMin: new Date().toISOString(), 
+      maxResults: 2, 
+      singleEvents: true, 
+      orderBy: 'startTime', 
     });
 
     return response.data.items; // This will contain the list of events
