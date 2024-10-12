@@ -42,6 +42,11 @@ function Dashboard() {
           'Content-Type': 'application/json',
         },
       });
+      const response2 = await axios.get('/api/fetch-events', formattedFormData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       console.log('Event created:', response.data);
     } catch (error) {
       console.error('Error creating event:', error.message);
