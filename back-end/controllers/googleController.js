@@ -46,18 +46,25 @@ async function fetchUserCalendarEvents(userId) {
 }
 
 
-
+const calendar = google.calendar('v3');
 
 exports.fetchEvents = async (req, res, next) => {
   try {
-    const userId = req.user.id;
-    const events = await fetchUserCalendarEvents(userId);
-    res.status(200).json(events);
+    const response = await calendar.events.list({
+      auth: oauth2Client,
+      calendarId: 'primary', 
+      timeMin: (new Date()).toISOString(), 
+      maxResults: 2, 
+      singleEvents: true, 
+      orderBy: 'startTime', 
+    });
+    const events = response.data.items;
+    console.log(events)
+    res.send("fetchEvents API is working")
   }
   catch(exception){
-
+    console.log(exception);
   }
-
 }
 
 
