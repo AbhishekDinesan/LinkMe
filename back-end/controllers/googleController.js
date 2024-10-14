@@ -1,7 +1,7 @@
 const { google } = require('googleapis');
 const { insertRefreshToken } = require('../models/refreshTokenModel');
 const oauth2Client = require('../utilities/oauth');
-const {insertUserTable} = require('../models/insertTable')
+const {insertUserTable, insertEventsTable} = require('../models/insertTable')
 
 const sampleEventId = '754glbobtnmhosveqbpgt3nrir';
 
@@ -15,52 +15,35 @@ exports.retrieveGoogleID = async() =>{
   console.log(userInfo)
 }
 
-async function fetchUserCalendarEvents(userId) {
-  const storedRefreshToken = await getRefreshTokenForUser(userId); // Implement this function
-
-  if (!storedRefreshToken) {
-    throw new Error('No refresh token found for user');
-  }
-
-  // Set the credentials for the OAuth2 client
-  oauth2Client.setCredentials({
-    refresh_token: storedRefreshToken,
-  });
-
-  const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-
-  try {
-    const response = await calendar.events.list({
-      calendarId: 'primary', 
-      timeMin: new Date().toISOString(), 
-      maxResults: 2, 
-      singleEvents: true, 
-      orderBy: 'startTime', 
-    });
-
-    return response.data.items; // This will contain the list of events
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    throw new Error('Failed to fetch events from Google Calendar');
-  }
-}
-
-
 const calendar = google.calendar('v3');
 
 exports.fetchEvents = async (req, res, next) => {
+  const daysOut = 14; // parameterize
   try {
+    const timeMin = new Date();
+    const timeMax = new Date();
+    timeMax.setDate(timeMax.getDate() + daysOut);
+
     const response = await calendar.events.list({
       auth: oauth2Client,
       calendarId: 'primary', 
-      timeMin: (new Date()).toISOString(), 
-      maxResults: 2, 
+      timeMin: timeMin.toISOString(), 
+      timeMax: timeMax.toISOString(),
+      maxResults: 100, 
       singleEvents: true, 
       orderBy: 'startTime', 
     });
+    oauth2Client.setCredentials(await oauth2Client.credentials);
+
+    const { data: userInfo } = await google.oauth2('v2').userinfo.get({
+        auth: oauth2Client
+    });
+
     const events = response.data.items;
     console.log(events)
-    res.send("fetchEvents API is working")
+    for (const event of events){
+      await insertEventsTable(userInfo.id, event); // user id, info about the event
+    }
   }
   catch(exception){
     console.log(exception);
@@ -129,74 +112,3 @@ exports.createTokens = async (req, res, next) => {
       next(error);
     }
   };
-
-  
-/*
-  router.put('/update-event/:id', async (req, res, next) => {
-    try {
-        const { id } = req.params; // Get the event ID from the URL
-        const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body;
-
-        const event = {
-            summary: eventName,
-            description: eventDescription,
-            start: {
-                dateTime: `${startEvent}T${startTime}:00`,
-                timeZone: 'America/Toronto',
-            },
-            end: {
-                dateTime: `${endEvent}T${endTime}:00`,
-                timeZone: 'America/Toronto',
-            },
-        };
-
-        const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-
-        // Update the event
-        const response = await calendar.events.update({
-            calendarId: 'primary',
-            eventId: id, // Use the event ID
-            resource: event,
-        });
-
-        res.status(200).send(response.data); // Return the updated event data
-    } catch (error) {
-        console.error('Error updating event:', error);
-        next(error);
-    }
-});
-
-router.put('/update-event/:id', async (req, res, next) => {
-  try {
-      const { id } = req.params; // Get the event ID from the URL
-      const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body;
-
-      const event = {
-          summary: eventName,
-          description: eventDescription,
-          start: {
-              dateTime: `${startEvent}T${startTime}:00`,
-              timeZone: 'America/Toronto',
-          },
-          end: {
-              dateTime: `${endEvent}T${endTime}:00`,
-              timeZone: 'America/Toronto',
-          },
-      };
-
-      const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-
-      // Update the event
-      const response = await calendar.events.update({
-          calendarId: 'primary',
-          eventId: id, // Use the event ID
-          resource: event,
-      });
-
-      res.status(200).send(response.data); // Return the updated event data
-  } catch (error) {
-      console.error('Error updating event:', error);
-      next(error);
-  }
-});
-*/

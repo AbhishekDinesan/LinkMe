@@ -47,6 +47,8 @@ function Dashboard() {
           'Content-Type': 'application/json',
         },
       });
+
+      // you need to insert response 2 into the database with the appropriate user_id
       console.log('Event created:', response.data);
       console.log(response2);
     } catch (error) {

@@ -2,21 +2,18 @@ const pool = require("../database/db")
 
 const createUsersTable =  
     `CREATE TABLE IF NOT EXISTS users (
-    user_id SERIAL PRIMARY KEY,
+    user_id BIGSERIAL PRIMARY KEY,
     google_user_id VARCHAR(255) UNIQUE NOT NULL,  
     name VARCHAR(255),
     email VARCHAR(255) UNIQUE NOT NULL,
     refresh_token TEXT NOT NULL,
     token_expires_at TIMESTAMP)`;    
 
-const createEventsTable = `CREATE TABLE events (
-  event_id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-  event_name VARCHAR(255),
-  description TEXT,
+const createEventsTable = `CREATE TABLE IF NOT EXISTS events (
+  event_id BIGSERIAL PRIMARY KEY,
+  user_id BIGINT REFERENCES users(user_id) ON DELETE CASCADE,
   start_time TIMESTAMP NOT NULL,
   end_time TIMESTAMP NOT NULL,
-  location VARCHAR(255), 
   google_event_id VARCHAR(255) UNIQUE 
 )`;
 
@@ -41,8 +38,8 @@ const createFreeTimeTable = `CREATE TABLE free_time (
 async function createTables() {
     try {
     await pool.query(createUsersTable);
+    await pool.query(createEventsTable);
     /*
-    await pool.query(createEventsTable());
     await pool.query(createGroupTable());
     await pool.query(createUserGroupTable());
     await pool.query(createFreeTimeTable());

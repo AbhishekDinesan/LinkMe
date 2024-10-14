@@ -29,3 +29,7 @@ We are following basic react-project structure.
 - pages and components centric
 
 
+## Where did you leave off
+- troubleshoot the insertion in the events table
+
+
