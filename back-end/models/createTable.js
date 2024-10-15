@@ -17,14 +17,14 @@ const createEventsTable = `CREATE TABLE IF NOT EXISTS events (
   google_event_id VARCHAR(255) UNIQUE 
 )`;
 
-const createGroupTable = `CREATE TABLE groups (
+const createGroupTable = `CREATE TABLE IF NOT EXISTS group_table (
   group_id SERIAL PRIMARY KEY,
   group_name VARCHAR(255) NOT NULL
 )`;
 
-const createUserGroupTable = `CREATE TABLE user_group (
+const createUserGroupTable = `CREATE TABLE IF NOT EXISTS user_group (
   user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-  group_id INT REFERENCES groups(group_id) ON DELETE CASCADE,
+  group_id INT REFERENCES group_table(group_id) ON DELETE CASCADE,
   PRIMARY KEY (user_id, group_id)
 )`;
 
@@ -39,9 +39,9 @@ async function createTables() {
     try {
     await pool.query(createUsersTable);
     await pool.query(createEventsTable);
+    await pool.query(createGroupTable);
+    await pool.query(createUserGroupTable);
     /*
-    await pool.query(createGroupTable());
-    await pool.query(createUserGroupTable());
     await pool.query(createFreeTimeTable());
     */
     console.log("Users table created successfully or already exists");

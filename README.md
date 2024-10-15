@@ -30,8 +30,7 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- allow multiple gmail accounts to login to this platform
-- create a button that forms a group
+- create an api POST endpoint that creates groups of users given an array of user_id's
 - develop an algorith that compares the free-time of users in the group
 
 

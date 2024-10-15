@@ -2,12 +2,26 @@ const { google } = require('googleapis');
 const { insertRefreshToken } = require('../models/refreshTokenModel');
 const oauth2Client = require('../utilities/oauth');
 const {insertUserTable, insertEventsTable} = require('../models/insertTable')
+const {createGroup} = require('../models/groupModel');
 
 const sampleEventId = '754glbobtnmhosveqbpgt3nrir';
 
 exports.getApiStatus = (req, res) => {
     res.send({ message: 'API route is working' });
   };
+
+  exports.createGroups = async (req, res) => {
+    try{
+      res.send({ message: 'API route is working' });
+      const dummyIds = [1,2]; // hard-coded an array
+      const response = await createGroup(dummyIds, "Amish Insurance Group");
+      // call 
+
+    }catch(exception){
+      console.log(exception);
+    }
+      
+  }
 
 
 exports.retrieveGoogleID = async() =>{

@@ -25,6 +25,19 @@ function Dashboard() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleAnotherAction = async () => {
+    try {
+      const response = await axios.post('/api/create-groups', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Group Response:', response.data);
+    } catch (error) {
+      console.error('Error during another action:', error.message);
+    }
+  };
   
   const handleSubmit = async (e) => {
     console.log('Form data being sent:', formData);
@@ -74,6 +87,7 @@ function Dashboard() {
     <BasicTimePicker labelName={"End Time"}value={formData.endTime}
       onChange={(time) => setFormData({ ...formData, endTime: time })}/>
     <BasicButton buttonName={"Create Event"} type="submit"/>
+    <BasicButton buttonName={"Create Group"} onClick={handleAnotherAction} type="button"/>
   </Box>
   }
   
