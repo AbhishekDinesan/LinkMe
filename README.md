@@ -30,11 +30,12 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- find a way to store time, and find free time among users in a group
+- given a time interval, figure out if people are free
+    - implement via augmented interval tree and querying
 - Improve UI (homepage --> login --> create group)
 - create a look-up for users in a group
+- create a database / ticketmaster API
 - create a messaging chat
-- create a database of local events / ticketmaster API
 - improve UI drastically
 
 

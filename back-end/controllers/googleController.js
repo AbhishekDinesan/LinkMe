@@ -3,6 +3,7 @@ const { insertRefreshToken } = require('../models/refreshTokenModel');
 const oauth2Client = require('../utilities/oauth');
 const {insertUserTable, insertEventsTable} = require('../models/insertTable')
 const {createGroup, fetchGroupEvents} = require('../models/groupModel');
+const { freeTimePreProcess } = require('../models/freeTime');
 
 const sampleEventId = '754glbobtnmhosveqbpgt3nrir';
 
@@ -15,7 +16,7 @@ exports.getApiStatus = (req, res) => {
     try{
       const dummyGroupId = 1;
       const response = await fetchGroupEvents(dummyGroupId);
-      console.log(response)
+      freeTimePreProcess(response);
     }catch(exception){
       console.log(exception);
     }
@@ -25,7 +26,7 @@ exports.getApiStatus = (req, res) => {
   exports.createGroups = async (req, res) => {
     try{
       res.send({ message: 'API route is working' });
-      const dummyIds = [1,2]; // hard-coded an array
+      const dummyIds = [1,2]; // hard-coded an array, and a name
       const response = await createGroup(dummyIds, "Amish Insurance Group");
       // call 
 
