@@ -30,7 +30,11 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- create an api POST endpoint that creates groups of users given an array of user_id's
-- develop an algorith that compares the free-time of users in the group
+- find a way to store time, and find free time among users in a group
+- Improve UI (homepage --> login --> create group)
+- create a look-up for users in a group
+- create a messaging chat
+- create a database of local events
+- improve UI drastically
 
 
