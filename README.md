@@ -34,7 +34,7 @@ We are following basic react-project structure.
 - Improve UI (homepage --> login --> create group)
 - create a look-up for users in a group
 - create a messaging chat
-- create a database of local events
+- create a database of local events / ticketmaster API
 - improve UI drastically
 
 

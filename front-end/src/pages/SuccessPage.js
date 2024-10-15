@@ -26,6 +26,20 @@ function Dashboard() {
     });
   };
 
+  const handleFreeTime = async () => {
+    try{
+      const response = await axios.post('/api/free-time', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Free-time Response:', response.data);
+    }
+    catch(exception){
+      console.log(exception)
+    }
+  };
+
   const handleAnotherAction = async () => {
     try {
       const response = await axios.post('/api/create-groups', {
@@ -88,6 +102,7 @@ function Dashboard() {
       onChange={(time) => setFormData({ ...formData, endTime: time })}/>
     <BasicButton buttonName={"Create Event"} type="submit"/>
     <BasicButton buttonName={"Create Group"} onClick={handleAnotherAction} type="button"/>
+    <BasicButton buttonName={"Calculate Free Time"} onClick={handleFreeTime} type="button"/>
   </Box>
   }
   

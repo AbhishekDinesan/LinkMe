@@ -7,6 +7,7 @@ router.post('/create-tokens', googleController.createTokens);
 router.post('/create-event', googleController.createEvent);
 router.get('/fetch-events', googleController.fetchEvents);
 router.post('/create-groups', googleController.createGroups);
+router.post('/free-time', googleController.freeTime);
 
 module.exports = router;
 

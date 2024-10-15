@@ -2,11 +2,23 @@ const { google } = require('googleapis');
 const { insertRefreshToken } = require('../models/refreshTokenModel');
 const oauth2Client = require('../utilities/oauth');
 const {insertUserTable, insertEventsTable} = require('../models/insertTable')
-const {createGroup} = require('../models/groupModel');
+const {createGroup, fetchGroupEvents} = require('../models/groupModel');
 
 const sampleEventId = '754glbobtnmhosveqbpgt3nrir';
 
 exports.getApiStatus = (req, res) => {
+    res.send({ message: 'API route is working' });
+  };
+
+  exports.freeTime = async(req, res) => {
+    //parametrize the group id
+    try{
+      const dummyGroupId = 1;
+      const response = await fetchGroupEvents(dummyGroupId);
+      console.log(response)
+    }catch(exception){
+      console.log(exception);
+    }
     res.send({ message: 'API route is working' });
   };
 
