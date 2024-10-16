@@ -8,8 +8,7 @@ const createGroupQuery = `
 const fetchGroupEventsQuery = `SELECT e.start_time, e.end_time
     FROM events e
     JOIN user_group ug ON e.user_id = ug.user_id
-    WHERE ug.group_id = $1
-    ORDER BY e.start_time ASC;`; // creates a table with start/end times for a given groupid 
+    WHERE ug.group_id = $1;`;
 
 const insertUsersIntoGroup = (userIds, groupId) => {
     const values = userIds.map((id, index) => `($${index + 1}, ${groupId})`).join(',');

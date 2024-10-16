@@ -31,11 +31,13 @@ We are following basic react-project structure.
 
 ## To-Do List
 - given a time interval, figure out if people are free
-    - implement via augmented interval tree and querying
-- Improve UI (homepage --> login --> create group)
+    - construct the interval tree correctly and query
+- refactor the hell out of the back-end
+- Improve UI (homepage --> login --> groups --> searching events)
 - create a look-up for users in a group
 - create a database / ticketmaster API
+- Deploymen with CI/CD?
 - create a messaging chat
-- improve UI drastically
+
 
 

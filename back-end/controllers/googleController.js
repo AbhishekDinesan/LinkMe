@@ -16,7 +16,7 @@ exports.getApiStatus = (req, res) => {
     try{
       const dummyGroupId = 1;
       const response = await fetchGroupEvents(dummyGroupId);
-      checkConflict(0, response);
+      checkConflict(response);
     }catch(exception){
       console.log(exception);
     }
