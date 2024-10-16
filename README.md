@@ -30,8 +30,6 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- given a time interval, figure out if people are free
-    - construct the interval tree correctly and query
 - refactor the hell out of the back-end
 - Improve UI (homepage --> login --> groups --> searching events)
 - create a look-up for users in a group
@@ -40,4 +38,4 @@ We are following basic react-project structure.
 - create a messaging chat
 
 
-
+- keep everything in one applicaton for now
