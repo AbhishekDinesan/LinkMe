@@ -3,7 +3,7 @@ const { insertRefreshToken } = require('../models/refreshTokenModel');
 const oauth2Client = require('../utilities/oauth');
 const {insertUserTable, insertEventsTable} = require('../models/insertTable')
 const {createGroup, fetchGroupEvents} = require('../models/groupModel');
-const { freeTimePreProcess } = require('../models/freeTime');
+const { checkConflict } = require('../models/freeTime');
 
 const sampleEventId = '754glbobtnmhosveqbpgt3nrir';
 
@@ -16,7 +16,7 @@ exports.getApiStatus = (req, res) => {
     try{
       const dummyGroupId = 1;
       const response = await fetchGroupEvents(dummyGroupId);
-      freeTimePreProcess(response);
+      checkConflict(0, response);
     }catch(exception){
       console.log(exception);
     }
