@@ -1,0 +1,1 @@
+INSERT INTO group_table (group_name) VALUES ($1) RETURNING group_id;

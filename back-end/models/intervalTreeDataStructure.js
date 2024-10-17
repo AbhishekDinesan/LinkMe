@@ -8,8 +8,6 @@ class IntervalTreeNode{
     }
 };
 
-
-
 function freeTimePreProcess(events_object) {
     var intervalNodeList = [];
     
@@ -26,15 +24,13 @@ function freeTimePreProcess(events_object) {
             console.warn("Event missing start_time or end_time:", event);
         }
     }
-    
-    // Log the interval node list for better readability
     console.log("This is the interval Node List:", JSON.stringify(intervalNodeList, null, 2));
     return intervalNodeList;
 }
 
 
 
-function checkFreeTime(){}; // given a list of events, and a query period, return all free time
+function checkFreeTime(){}; 
 
 function intervalTreeInsert(rootNode, intervalNode) {
     if (!rootNode) {
@@ -63,24 +59,13 @@ function printIntervalNodesLevelByLevel(root) {
         console.log("Tree is empty");
         return;
     }
-
-    // Create a queue to hold nodes at each level
     let queue = [];
-    queue.push(root);  // Start with the root node
-
-    // BFS traversal, process nodes level by level
+    queue.push(root); 
     while (queue.length > 0) {
-        let levelSize = queue.length;  // Number of nodes at the current level
-
-        // Process all nodes at the current level
+        let levelSize = queue.length;  
         while (levelSize > 0) {
-            // Get the front node from the queue
             let currentNode = queue.shift();
-            
-            // Print the current node's interval and max values
             console.log(`Node: [${currentNode.interval.startDate} ${currentNode.interval.startTime}] to [${currentNode.interval.endDate} ${currentNode.interval.endTime}], maxEndDate: ${currentNode.maxEndDate}, maxEndTime: ${currentNode.maxEndTime}`);
-
-            // Add left and right children to the queue for the next level
             if (currentNode.left) {
                 queue.push(currentNode.left);
             }
@@ -88,10 +73,8 @@ function printIntervalNodesLevelByLevel(root) {
                 queue.push(currentNode.right);
             }
 
-            levelSize--;  // Decrease the level size count
+            levelSize--;  
         }
-
-        // Add a line break to separate levels
         console.log("--------");
     }
 }
