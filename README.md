@@ -30,11 +30,11 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- refactor the hell out of the back-end
-- Improve UI (homepage --> login --> groups --> searching events)
-- create a look-up for users in a group
-- create a database / ticketmaster API
-- Deploymen with CI/CD?
+- Develop a UI progression to get to the database page
+- implement db logic and creating groups in full stack
+-  ticketmaster API, search events
+- Deployment with CI/CD?
+- create messaging chats
 - create a messaging chat
 
 

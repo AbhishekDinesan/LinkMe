@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { GoogleLoginButton } from '../components/GoogleLogin';
 import { TypeAnimation } from 'react-type-animation';
+import MenuAppBar from '../components/AppBar';
 
 export default function Hero() {
   return (
@@ -24,6 +25,7 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
       })}
     >
+      <MenuAppBar title={"🔗 LinkMe."} />
       <Container
         sx={{
           display: 'flex',

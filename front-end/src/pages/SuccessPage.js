@@ -7,6 +7,7 @@ import BasicTimePicker from '../components/TimePicker';
 import BasicButton from '../components/basicButton';
 import axios from 'axios';
 import dayjs from 'dayjs'
+import MenuAppBar from '../components/AppBar';
 
 
 function Dashboard() {
@@ -90,6 +91,7 @@ function Dashboard() {
     autoComplete="off"
     onSubmit={handleSubmit}
   >
+    <MenuAppBar title={"🔗 LinkMe."} />
     <TextField id="outlined-basic" label="Event Name" variant="standard" name="eventName" value={formData.eventName} onChange={handleChange}/>
     <TextField id="outlined-basic" label="Event Description" variant="standard" name="eventDescription" value={formData.eventDescription} onChange={handleChange} />
     <BasicDatePicker labelName={"Start Event"}   value={formData.startEvent}
