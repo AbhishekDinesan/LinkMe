@@ -1,4 +1,5 @@
 const {createGroup} = require('../models/groupModel');
+const {fetchNameOfUsers} = require('../database/insertTable')
 
 exports.createGroups = async (req, res) => {
     try{
@@ -8,5 +9,9 @@ exports.createGroups = async (req, res) => {
     }catch(exception){
       console.log(exception);
     }
-      
   }
+
+exports.fetchUsers = async(req, res) => {
+  const response = await fetchNameOfUsers();
+  res.send(response);
+};

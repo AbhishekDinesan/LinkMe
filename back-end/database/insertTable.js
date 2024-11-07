@@ -21,6 +21,17 @@ async function fetchInternalUserId(google_user_id){
     return result.rows[0];  
 };
 
+async function fetchNameOfUsers(){
+    try{
+        const fetchUserNames = readSqlFile('../sql/users/fetchUserNames.sql');
+        const result = await(pool.query(fetchUserNames)); 
+        const userNames = result.rows.map(row => row.name);
+        return userNames;
+    }catch(exception){
+        console.log(exception)
+    }
+}
+
 async function insertEventsTable(user_id, events_object) {
     try {
         const user = await fetchInternalUserId(user_id);
@@ -38,4 +49,4 @@ async function insertEventsTable(user_id, events_object) {
     }
 };
 
-module.exports = {insertUserTable, insertEventsTable}
+module.exports = {insertUserTable, insertEventsTable, fetchNameOfUsers}

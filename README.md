@@ -30,12 +30,14 @@ We are following basic react-project structure.
 
 
 ## To-Do List
-- Develop a UI progression to get to the database page
-- implement db logic and creating groups in full stack
--  ticketmaster API, search events
+
+Short-term:
+- pass prop into front-end, refactor the hell out of front-end and learn React
+- actually create groups with the create Groups button
+- figure out how to actually use the tickermaster API
+
+Long-term:
 - Deployment with CI/CD?
 - create messaging chats
 - create a messaging chat
-
-
 - keep everything in one applicaton for now

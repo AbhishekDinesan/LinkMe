@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, TextField, Button, Typography, Paper, Avatar, List, ListItem, ListItemAvatar, ListItemText, Divider, Box, Chip } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import { blue, grey } from '@mui/material/colors';
+import axios from 'axios';
 
 const GroupCreationPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
-  // Mock list of all users for demonstration purposes
-  const allUsers = ['John Doe', 'Jane Smith', 'Alex Johnson', 'Emily Davis', 'Michael Brown', 'Sophia Wilson'];
-  
+  // Fetch users when the component mounts
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('/api/fetch-users', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setAllUsers(response.data);  // Set all users here
+      } catch (exception) {
+        console.error(exception);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   // Filtered users should start as the full list, then be filtered as search term changes
-  const filteredUsers = allUsers.filter(user =>
-    user.toLowerCase().includes(searchTerm.toLowerCase()) && !selectedUsers.includes(user)
-  );
+  const filteredUsers = allUsers
+    ? allUsers.filter(user =>
+        user && user.toLowerCase().includes(searchTerm.toLowerCase()) && !selectedUsers.includes(user)
+      )
+    : [];
 
   const handleSearch = (event) => {
-    const term = event.target.value;
-    setSearchTerm(term);
+    setSearchTerm(event.target.value);
   };
 
   const handleAddUser = (user) => {

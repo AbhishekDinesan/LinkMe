@@ -7,8 +7,7 @@ import BasicTimePicker from '../components/TimePicker';
 import BasicButton from '../components/basicButton';
 import axios from 'axios';
 import dayjs from 'dayjs'
-import MenuAppBar from '../components/AppBar';
-
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [formData, setFormData] = useState({ 
@@ -41,7 +40,9 @@ function Dashboard() {
     }
   };
 
-  const handleAnotherAction = async () => {
+  const navigate = useNavigate();
+
+  const handleGroupAction = async () => {
     try {
       const response = await axios.post('/api/create-groups', {
         headers: {
@@ -49,6 +50,7 @@ function Dashboard() {
         },
       });
       console.log('Group Response:', response.data);
+      navigate('/dashboard');  // navigate to the group creation page
     } catch (error) {
       console.error('Error during another action:', error.message);
     }
@@ -86,12 +88,11 @@ function Dashboard() {
   
     return <Box
     component="form"
-    sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+    sx={{ '& > :not(style)': { m: 1, width: '25ch', marginTop: '64px' } }}
     noValidate
     autoComplete="off"
     onSubmit={handleSubmit}
   >
-    <MenuAppBar title={"🔗 LinkMe."} />
     <TextField id="outlined-basic" label="Event Name" variant="standard" name="eventName" value={formData.eventName} onChange={handleChange}/>
     <TextField id="outlined-basic" label="Event Description" variant="standard" name="eventDescription" value={formData.eventDescription} onChange={handleChange} />
     <BasicDatePicker labelName={"Start Event"}   value={formData.startEvent}
@@ -103,7 +104,7 @@ function Dashboard() {
     <BasicTimePicker labelName={"End Time"}value={formData.endTime}
       onChange={(time) => setFormData({ ...formData, endTime: time })}/>
     <BasicButton buttonName={"Create Event"} type="submit"/>
-    <BasicButton buttonName={"Create Group"} onClick={handleAnotherAction} type="button"/>
+    <BasicButton buttonName={"Create Group"} onClick={handleGroupAction} type="button"/>
     <BasicButton buttonName={"Calculate Free Time"} onClick={handleFreeTime} type="button"/>
   </Box>
   }

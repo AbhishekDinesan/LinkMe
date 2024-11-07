@@ -10,5 +10,7 @@ router.post('/free-time', googleController.freeTime);
 
 router.post('/create-groups', groupController.createGroups);
 
+router.get('/fetch-users', groupController.fetchUsers);
+
 module.exports = router;
 

@@ -16,7 +16,7 @@ export function GoogleLoginButton() {
           const serverResponse = await axios.post('/api/create-tokens', { code });
           console.log('Tokens:', serverResponse.data);
           const { access_token } = serverResponse.data.tokens;
-          navigate('/dashboard');
+          navigate('/dashboard'); // this is horrible, horrible, horrible design you idiot
         } catch (error) {
           console.error('Error exchanging authorization code:', error.message);
         }

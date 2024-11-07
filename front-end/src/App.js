@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from './components/FooterBar';
 import FooterBar from './components/FooterBar';
 import GroupCreationPage from './pages/groupCreationPage';
+import EventsPage from './pages/eventsPage';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/dashboard" element={<Dashboard />} />  
-          <Route path="/groupCreation" element={<GroupCreationPage />} />  
+          <Route path="/groupCreation" element={<GroupCreationPage />} /> 
+          <Route path="/eventsPage" element={<EventsPage />} />
         </Routes>
       </Router>
     </GoogleOAuthProvider>
