@@ -50,7 +50,6 @@ function Dashboard() {
         },
       });
       console.log('Group Response:', response.data);
-      navigate('/dashboard');  // navigate to the group creation page
     } catch (error) {
       console.error('Error during another action:', error.message);
     }
@@ -104,7 +103,7 @@ function Dashboard() {
     <BasicTimePicker labelName={"End Time"}value={formData.endTime}
       onChange={(time) => setFormData({ ...formData, endTime: time })}/>
     <BasicButton buttonName={"Create Event"} type="submit"/>
-    <BasicButton buttonName={"Create Group"} onClick={handleGroupAction} type="button"/>
+    <BasicButton buttonName={"Create Group"} onClick={handleGroupAction} type="button" redirect={"/groupCreation"}/>
     <BasicButton buttonName={"Calculate Free Time"} onClick={handleFreeTime} type="button"/>
   </Box>
   }
