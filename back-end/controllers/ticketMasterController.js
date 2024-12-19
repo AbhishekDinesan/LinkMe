@@ -1,7 +1,6 @@
 const express = require('express');
 const axios = require('axios')
 
-// we could make a billion different endpoints to parse individual queries
 
 exports.fetchTMevents = async(req, res) =>{
     try{
