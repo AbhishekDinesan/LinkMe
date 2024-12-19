@@ -12,4 +12,4 @@ Integrated with Google Calendar & Google Auth.
 - **Frontend:** React, Material-UI, React Router, Axios
 - **Backend:** Node.js, Express
 - **Database:** PostgreSQL, Sequelize ORM
-- **Google API:** Google Calendar API, Google OAuth 2, TicketMaster API
+- **Other stuff** Google Calendar API, Google OAuth 2, TicketMaster API
