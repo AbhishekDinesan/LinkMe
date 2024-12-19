@@ -50,5 +50,10 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-scripts": "^5.0.1"
   },
-  "allowedHosts": ["*"]
+  "allowedHosts": ["*"],
+  "devServer": {
+  "allowedHosts": "all",
+  "host": "0.0.0.0",
+  "disableHostCheck": true
+}
 }
