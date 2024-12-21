@@ -10,6 +10,7 @@ import Footer from './components/FooterBar';
 import FooterBar from './components/FooterBar';
 import GroupCreationPage from './pages/groupCreationPage';
 import EventsPage from './pages/eventsPage';
+import './styles/App.css'
 
 function App() {
   return (

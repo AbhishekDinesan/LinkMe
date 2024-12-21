@@ -25,9 +25,10 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
       })}
     >
-      <MenuAppBar title={"🔗 LinkMe."} />
+      <MenuAppBar title={"🔗 LinkMe."} subtitles={["For Vendors", "For Customers"]} />
       <Container
         sx={{
+          padding: 0,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

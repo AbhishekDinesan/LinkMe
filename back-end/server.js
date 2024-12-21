@@ -1,6 +1,9 @@
 const express = require('express');
 const apiRouter = require('../back-end/routes/api');
 require('dotenv').config();
+/// note to self, you are removing the host env in deployment
+
+
 
 const app = express();
 
