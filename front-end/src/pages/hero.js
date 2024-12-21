@@ -11,6 +11,7 @@ import { GoogleLoginButton } from '../components/GoogleLogin';
 import { TypeAnimation } from 'react-type-animation';
 import MenuAppBar from '../components/AppBar';
 
+
 export default function Hero() {
   return (
     <Box
@@ -18,10 +19,9 @@ export default function Hero() {
       sx={(theme) => ({
         width: '100%',
         backgroundImage:
-          theme.palette.mode === 'light'
-            ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-            : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
-        backgroundSize: '100% 80%',
+  theme.palette.mode === 'light'
+    ? 'linear-gradient(180deg, #A0CFFB 15%, #CEE5FD 50%, #FFFFFF 100%)'
+    : `linear-gradient(180deg, #02294F 5%, ${alpha('#090E10', 0.7)} 70%)`,
         backgroundRepeat: 'no-repeat',
       })}
     >
@@ -45,6 +45,7 @@ export default function Hero() {
               alignSelf: 'center',
               textAlign: 'center',
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
+              marginBottom: 2,
             }}
           >
             Looking for plans&nbsp;
@@ -68,7 +69,8 @@ export default function Hero() {
           <Typography
             textAlign="center"
             color="text.secondary"
-            sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
+            sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' },  fontSize: '1.0rem' }}
+            marginBottom={3}
           > 
             🔗 LinkMe finds free time between you and your friends and finds you things to do. <br />
             So you can spend more time{' '}
@@ -99,7 +101,7 @@ export default function Hero() {
                 'aria-label': 'Enter your email address',
               }}
             />
-            <GoogleLoginButton />
+            <GoogleLoginButton redirect="groupCreation" />
           </Stack>
           <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
             By clicking &quot;Start now&quot; you agree to our&nbsp;

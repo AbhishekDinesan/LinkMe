@@ -34,7 +34,15 @@ export default function MenuAppBar({ title, subtitles }) {
             {title}
           </Typography>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            {subtitles.map((text, index) => (<Button key={index} color="inherit" sx={{ fontWeight: 'bold' }}> {text} </Button>))}
+          {subtitles && subtitles.length > 0 ? (
+  subtitles.map((text, index) => (
+    <Button key={index} color="inherit" sx={{ fontWeight: 'bold' }}>
+      {text}
+    </Button>
+  ))
+) : (
+  <Button></Button>
+)}
           </Box>
         </Toolbar>
       </AppBar>

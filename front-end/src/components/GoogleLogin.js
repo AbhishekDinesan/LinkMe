@@ -4,7 +4,7 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-export function GoogleLoginButton() {
+export function GoogleLoginButton({redirect}) {
     const navigate = useNavigate();
     const googleLogin = useGoogleLogin({
       flow: 'auth-code',
@@ -16,7 +16,7 @@ export function GoogleLoginButton() {
           const serverResponse = await axios.post('/api/create-tokens', { code });
           console.log('Tokens:', serverResponse.data);
           const { access_token } = serverResponse.data.tokens;
-          navigate('/dashboard'); // this is horrible, horrible, horrible design you idiot
+          navigate(`/${redirect}`);
         } catch (error) {
           console.error('Error exchanging authorization code:', error.message);
         }
