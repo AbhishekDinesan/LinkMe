@@ -20,6 +20,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "react-type-animation": "^3.2.0",
+    "swiper": "^11.1.15",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -50,10 +51,12 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-scripts": "^5.0.1"
   },
-  "allowedHosts": ["*"],
+  "allowedHosts": [
+    "*"
+  ],
   "devServer": {
-  "allowedHosts": "all",
-  "host": "0.0.0.0",
-  "disableHostCheck": true
-}
+    "allowedHosts": "all",
+    "host": "0.0.0.0",
+    "disableHostCheck": true
+  }
 }
