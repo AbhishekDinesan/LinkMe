@@ -2,29 +2,107 @@ import React, { useState } from 'react';
 import BasicButton from '../components/basicButton';
 import MenuAppBar from '../components/AppBar';
 import GenericCard from '../components/Card';
-import { Box, Modal, Typography } from '@mui/material';
+import {
+  Box,
+  MenuItem,
+  Select,
+  Typography,
+  Modal,
+} from '@mui/material';
 
 const EventsPage = () => {
   const [expandedCard, setExpandedCard] = useState(null); 
+  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedMonth, setSelectedMonth] = useState('January');
+  const [selectedDay, setSelectedDay] = useState('1');
+  const [selectedQuickOption, setSelectedQuickOption] = useState('Today');
+
   const handleCardClick = (index) => {
     setExpandedCard(index); 
   };
+
   const handleClose = () => {
-    setExpandedCard(null); //
+    setExpandedCard(null); 
   };
 
   return (
     <div>
       <MenuAppBar title={"🔗 LinkMe."} />
-      <Box sx={{ mt: 4 }}>
-        <BasicButton buttonName={"AI Recommendation"} type="submit" />
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 2,
+          mt: 4,
+          flexWrap: 'wrap',
+        }}
+      >
+
+        <Select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value)}
+        >
+          {['2023', '2024', '2025'].map((year) => (
+            <MenuItem key={year} value={year}>
+              {year}
+            </MenuItem>
+          ))}
+        </Select>
+
+        <Select
+          value={selectedMonth}
+          onChange={(e) => setSelectedMonth(e.target.value)}
+        >
+          {[
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ].map((month) => (
+            <MenuItem key={month} value={month}>
+              {month}
+            </MenuItem>
+          ))}
+        </Select>
+
+        <Select
+          value={selectedDay}
+          onChange={(e) => setSelectedDay(e.target.value)}
+        >
+          {Array.from({ length: 31 }, (_, i) => (i + 1).toString()).map((day) => (
+            <MenuItem key={day} value={day}>
+              {day}
+            </MenuItem>
+          ))}
+        </Select>
+
+        <Select
+          value={selectedQuickOption}
+          onChange={(e) => setSelectedQuickOption(e.target.value)}
+        >
+          {['Today', 'Tomorrow', 'Next Week'].map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
       </Box>
+
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          mt: 4, // margin-top
+          mt: 4, 
         }}
       >
         <Box
@@ -33,7 +111,7 @@ const EventsPage = () => {
             overflowX: 'auto',
             width: '90%',
             padding: 2,
-            gap: 2, // space between cards
+            gap: 2, 
           }}
         >
           {Array.from({ length: 10 }).map((_, index) => (
@@ -43,7 +121,7 @@ const EventsPage = () => {
                 minWidth: 300,
                 cursor: 'pointer',
               }}
-              onClick={() => handleCardClick(index)} // Handle click event
+              onClick={() => handleCardClick(index)} 
             >
               <GenericCard
                 title={`Event ${index + 1}`}
@@ -82,6 +160,17 @@ const EventsPage = () => {
           </Box>
         </Modal>
       )}
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 4, 
+        }}
+      >
+  <BasicButton buttonName={"🤖 AI Recommendation"} />
+</Box>
     </div>
   );
 };
