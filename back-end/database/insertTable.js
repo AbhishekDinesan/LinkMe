@@ -21,6 +21,12 @@ async function fetchInternalUserId(google_user_id){
     return result.rows[0];  
 };
 
+async function fetchUserIdFromName(userName){
+    const fetchUserIdFromName = readSqlFile('../sql/users/fetchUserIdFromName.sql')
+    const result = await(pool.query(fetchUserIdFromName, [userName])); 
+    return result.rows[0]; 
+}
+
 async function fetchNameOfUsers(){
     try{
         const fetchUserNames = readSqlFile('../sql/users/fetchUserNames.sql');
@@ -49,4 +55,4 @@ async function insertEventsTable(user_id, events_object) {
     }
 };
 
-module.exports = {insertUserTable, insertEventsTable, fetchNameOfUsers}
+module.exports = {insertUserTable, insertEventsTable, fetchNameOfUsers, fetchUserIdFromName}

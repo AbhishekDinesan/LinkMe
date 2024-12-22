@@ -12,7 +12,16 @@ const GroupCreationPage = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
 
-  // Fetch users when the component mounts
+  const handleClick = () => {
+    try{
+      console.log("I LOVE LATINAAAAAS")
+      console.log(selectedUsers)
+      axios.post('/api/create-groups', {ids: selectedUsers})
+    }
+    catch(exception){
+      console.log(exception)
+    }
+  }
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -72,7 +81,7 @@ const GroupCreationPage = () => {
               sx={{ mr: 2, borderRadius: '8px', backgroundColor: grey[50] }}
             />
 
-            <BasicButton buttonName = "Create" redirect='eventsPage' />
+            <BasicButton buttonName = "Create" redirect='eventsPage' onClick={handleClick} />  
             <Button
               variant="contained"
               color="primary"
