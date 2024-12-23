@@ -10,7 +10,7 @@ router.get('/fetch-events', googleController.fetchEvents);
 router.post('/free-time', googleController.freeTime);
 router.post('/create-groups', groupController.createGroups);
 router.get('/fetch-users', groupController.fetchUsers);
-router.get('/fetch-TMevents', TMController.fetchTMevents) // make a new ticker master controller
+router.get('/fetch-TMevents', TMController.genericEvents) // make a new ticker master controller
 
 
 module.exports = router;
