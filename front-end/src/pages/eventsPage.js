@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import BasicButton from '../components/basicButton';
 import MenuAppBar from '../components/AppBar';
 import GenericCard from '../components/Card';
@@ -11,23 +12,39 @@ import {
 } from '@mui/material';
 
 const EventsPage = () => {
-  const [expandedCard, setExpandedCard] = useState(null); 
+  const [events, setEvents] = useState([]);
+  const [expandedCard, setExpandedCard] = useState(null);
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedMonth, setSelectedMonth] = useState('January');
   const [selectedDay, setSelectedDay] = useState('1');
   const [selectedQuickOption, setSelectedQuickOption] = useState('Today');
 
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('/api/fetch-start-date-events', {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response.data)
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+    fetchEvents();
+  }, []);
+
   const handleCardClick = (index) => {
-    setExpandedCard(index); 
+    setExpandedCard(index);
   };
 
   const handleClose = () => {
-    setExpandedCard(null); 
+    setExpandedCard(null);
   };
 
   return (
     <div>
-      <MenuAppBar title={"🔗 LinkMe."} />
+      <MenuAppBar title="🔗 LinkMe." />
 
       <Box
         sx={{
@@ -38,11 +55,8 @@ const EventsPage = () => {
           flexWrap: 'wrap',
         }}
       >
-
-        <Select
-          value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value)}
-        >
+        {/* Dropdown Menus for Year, Month, Day, Quick Options */}
+        <Select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
           {['2023', '2024', '2025'].map((year) => (
             <MenuItem key={year} value={year}>
               {year}
@@ -50,34 +64,17 @@ const EventsPage = () => {
           ))}
         </Select>
 
-        <Select
-          value={selectedMonth}
-          onChange={(e) => setSelectedMonth(e.target.value)}
-        >
-          {[
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-          ].map((month) => (
-            <MenuItem key={month} value={month}>
-              {month}
-            </MenuItem>
-          ))}
+        <Select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+          {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map(
+            (month) => (
+              <MenuItem key={month} value={month}>
+                {month}
+              </MenuItem>
+            )
+          )}
         </Select>
 
-        <Select
-          value={selectedDay}
-          onChange={(e) => setSelectedDay(e.target.value)}
-        >
+        <Select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
           {Array.from({ length: 31 }, (_, i) => (i + 1).toString()).map((day) => (
             <MenuItem key={day} value={day}>
               {day}
@@ -102,7 +99,7 @@ const EventsPage = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          mt: 4, 
+          mt: 4,
         }}
       >
         <Box
@@ -111,28 +108,35 @@ const EventsPage = () => {
             overflowX: 'auto',
             width: '90%',
             padding: 2,
-            gap: 2, 
+            gap: 2,
           }}
         >
-          {Array.from({ length: 10 }).map((_, index) => (
+          {/* Map over fetched events to render cards */}
+          {events.map((event, index) => (
             <Box
-              key={index}
+              key={event.id}
               sx={{
                 minWidth: 300,
                 cursor: 'pointer',
               }}
-              onClick={() => handleCardClick(index)} 
+              onClick={() => handleCardClick(index)}
             >
               <GenericCard
-                title={`Event ${index + 1}`}
-                description={`Details for event ${index + 1}`}
+                name={event.name}
+                startingDateTime={event.startingDateTime}
+                venue={event.venue}
+                city={event.city}
+                country={event.country}
+                eventUrl={event.url}
+                eventGenre={event.eventGenre}
+                imageUrl={event.imageUrl || 'defaultImageURL'} // Fallback image
               />
             </Box>
           ))}
         </Box>
       </Box>
 
-      {expandedCard !== null && (
+      {expandedCard !== null && events[expandedCard] && (
         <Modal open={true} onClose={handleClose}>
           <Box
             sx={{
@@ -149,13 +153,19 @@ const EventsPage = () => {
             }}
           >
             <Typography variant="h4" gutterBottom>
-              Event {expandedCard + 1}
+              {events[expandedCard].name}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              Detailed information about Event {expandedCard + 1}.
+              Detailed information about {events[expandedCard].name}.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Venue: {events[expandedCard].venue}
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              City: {events[expandedCard].city}, {events[expandedCard].country}
             </Typography>
             <Box sx={{ mt: 4 }}>
-              <BasicButton buttonName={"Close"} type="button" onClick={handleClose} />
+              <BasicButton buttonName="Close" type="button" onClick={handleClose} />
             </Box>
           </Box>
         </Modal>
@@ -166,11 +176,11 @@ const EventsPage = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          mt: 4, 
+          mt: 4,
         }}
       >
-  <BasicButton buttonName={"🤖 AI Recommendation"} />
-</Box>
+        <BasicButton buttonName="🤖 AI Recommendation" />
+      </Box>
     </div>
   );
 };
