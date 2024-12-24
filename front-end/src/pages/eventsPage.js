@@ -55,7 +55,6 @@ const EventsPage = () => {
           flexWrap: 'wrap',
         }}
       >
-        {/* Dropdown Menus for Year, Month, Day, Quick Options */}
         <Select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
           {['2023', '2024', '2025'].map((year) => (
             <MenuItem key={year} value={year}>
