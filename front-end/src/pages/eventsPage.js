@@ -9,8 +9,13 @@ import {
   Select,
   Typography,
   Modal,
+  Button,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
 } from '@mui/material';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -38,7 +43,7 @@ const EventsPage = () => {
       });
       console.log(response.data);
       groupId = getGroupDataFromCookie();
-      console.log("Does the groupId persist" + groupId)
+      console.log("Does the groupId persist" + groupId);
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -140,7 +145,7 @@ const EventsPage = () => {
         </Box>
       </Box>
 
-      {expandedCard !== null && events[expandedCard] && (
+      {expandedCard !== null && (
         <Modal open={true} onClose={handleClose}>
           <Box
             sx={{
@@ -149,28 +154,50 @@ const EventsPage = () => {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               width: '80%',
+              maxWidth: 500,
               bgcolor: 'background.paper',
-              border: '2px solid #000',
-              boxShadow: 24,
-              p: 4,
               borderRadius: 2,
+              boxShadow: 24,
+              p: 2,
             }}
           >
-            <Typography variant="h4" gutterBottom>
-              {events[expandedCard].name}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Detailed information about {events[expandedCard].name}.
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              Venue: {events[expandedCard].venue}
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              City: {events[expandedCard].city}, {events[expandedCard].country}
-            </Typography>
-            <Box sx={{ mt: 4 }}>
-              <BasicButton buttonName="Close" type="button" onClick={handleClose} />
-            </Box>
+            <Card>
+              <CardMedia
+                component="img"
+                height="200"
+                image={events[expandedCard]?.imageUrl || 'defaultImageURL'}
+                alt={events[expandedCard]?.name}
+              />
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  {events[expandedCard]?.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Venue: {events[expandedCard]?.venue}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  City: {events[expandedCard]?.city}, {events[expandedCard]?.country}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Genre: {events[expandedCard]?.eventGenre}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  component="a"
+                  href={events[expandedCard]?.eventUrl}
+                >
+                  View Event
+                </Button>
+                <Button size="small" color="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </CardActions>
+            </Card>
           </Box>
         </Modal>
       )}

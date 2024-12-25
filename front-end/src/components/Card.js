@@ -35,7 +35,6 @@ export default function GenericCard({
     >
       <CardActionArea
         component="a"
-        href={eventUrl}
         target="_blank"
         rel="noopener noreferrer"
       >
