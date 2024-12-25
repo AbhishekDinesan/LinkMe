@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import BasicButton from '../components/basicButton';
 import MenuAppBar from '../components/AppBar';
@@ -10,6 +10,7 @@ import {
   Typography,
   Modal,
 } from '@mui/material';
+import Cookies from 'js-cookie'
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -17,22 +18,36 @@ const EventsPage = () => {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedMonth, setSelectedMonth] = useState('January');
   const [selectedDay, setSelectedDay] = useState('1');
-  const [selectedQuickOption, setSelectedQuickOption] = useState('Today');
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await axios.get('/api/fetch-start-date-events', {
-          headers: { 'Content-Type': 'application/json' },
-        });
-        console.log(response.data)
-        setEvents(response.data);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-      }
-    };
+  var groupId = null;
+
+  const getGroupDataFromCookie = () => {
+    const groupId = Cookies.get('groupId');
+    return groupId ? JSON.parse(groupId) : null;
+  };
+
+  const fetchEvents = async () => {
+    try {
+      const selectedDate = `${selectedYear}-${String(
+        new Date(`${selectedMonth} 1`).getMonth() + 1
+      ).padStart(2, '0')}-${selectedDay.padStart(2, '0')}T00:00:00Z`;
+
+      const response = await axios.get('/api/fetch-start-date-events', {
+        headers: { 'Content-Type': 'application/json' },
+        params: { startDate: selectedDate, numEvents: 20 },
+      });
+      console.log(response.data);
+      groupId = getGroupDataFromCookie();
+      console.log("Does the groupId persist" + groupId)
+      setEvents(response.data);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
+
+  const handleSearch = () => {
     fetchEvents();
-  }, []);
+  };
 
   const handleCardClick = (index) => {
     setExpandedCard(index);
@@ -81,16 +96,7 @@ const EventsPage = () => {
           ))}
         </Select>
 
-        <Select
-          value={selectedQuickOption}
-          onChange={(e) => setSelectedQuickOption(e.target.value)}
-        >
-          {['Today', 'Tomorrow', 'Next Week'].map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
+        <BasicButton buttonName="Search" onClick={handleSearch} />
       </Box>
 
       <Box
@@ -110,7 +116,6 @@ const EventsPage = () => {
             gap: 2,
           }}
         >
-          {/* Map over fetched events to render cards */}
           {events.map((event, index) => (
             <Box
               key={event.id}
@@ -128,7 +133,7 @@ const EventsPage = () => {
                 country={event.country}
                 eventUrl={event.url}
                 eventGenre={event.eventGenre}
-                imageUrl={event.imageUrl || 'defaultImageURL'} // Fallback image
+                imageUrl={event.imageUrl || 'defaultImageURL'}
               />
             </Box>
           ))}

@@ -6,17 +6,23 @@ import { blue, grey, teal } from '@mui/material/colors';
 import axios from 'axios';
 import MenuAppBar from '../components/AppBar';
 import BasicButton from '../components/basicButton';
+import Cookies from 'js-cookie'
 
 const GroupCreationPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
 
-  const handleClick = () => {
+  const saveGroupIdToCookie = (groupId) => {
+    Cookies.set('groupId', JSON.stringify(groupId), { expires: 1 }); 
+  };
+
+  const handleClick = async () => {
     try{
-      console.log("I LOVE LATINAAAAAS")
       console.log(selectedUsers)
-      axios.post('/api/create-groups', {ids: selectedUsers})
+      const response = await axios.post('/api/create-groups', {ids: selectedUsers})  // add a response variable to hold group number
+      const groupId = response.data.groupId
+      saveGroupIdToCookie(groupId)
     }
     catch(exception){
       console.log(exception)
