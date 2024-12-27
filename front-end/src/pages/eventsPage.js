@@ -20,7 +20,7 @@ import Cookies from 'js-cookie';
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
-  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedYear, setSelectedYear] = useState('2025');
   const [selectedMonth, setSelectedMonth] = useState('January');
   const [selectedDay, setSelectedDay] = useState('1');
 
@@ -76,7 +76,7 @@ const EventsPage = () => {
         }}
       >
         <Select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-          {['2023', '2024', '2025'].map((year) => (
+          {['2025', '2026', '2027'].map((year) => (
             <MenuItem key={year} value={year}>
               {year}
             </MenuItem>
