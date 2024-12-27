@@ -20,8 +20,8 @@ exports.queryEventsOnStartDate = async(req, res) => {
             params: {
               apikey: process.env.TMCONSUMERKEY,
               sort: 'date,asc',
-              startDateTime: '2025-01-01T00:00:00Z',
-              size: 10 
+              startDateTime: req.query.startDate,
+              size: req.query.numEvents,
             }
           });
         const events = response.data._embedded.events.map(extractEventPayload);

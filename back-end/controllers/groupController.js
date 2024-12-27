@@ -17,8 +17,9 @@ exports.createGroups = async (req, res) => {
       }
       const userIds = userID.map(element => parseInt(element.user_id, 10));
       console.log(userIds)
-      await createGroup(userIds, "New Group");
-      res.send({ message: 'API route is working' }); 
+      const response = await createGroup(userIds, "New Group");
+      console.log("hiiiiiiiii" + response)
+      res.status(200).send({ groupId: response });
     }catch(exception){
       console.log(exception);
     }

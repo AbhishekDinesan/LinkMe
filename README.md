@@ -13,3 +13,8 @@ Integrated with Google Calendar & Google Auth.
 - **Backend:** Node.js, Express
 - **Database:** PostgreSQL, Sequelize ORM
 - **Other stuff:** Google Calendar API, Google OAuth 2, TicketMaster API
+
+
+## Database Diagramming
+
+![alt text](image.png)
