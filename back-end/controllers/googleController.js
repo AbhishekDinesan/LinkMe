@@ -19,6 +19,8 @@ const calendar = google.calendar('v3');
 exports.fetchEvents = async (req, res, next) => {
   const daysOut = 14; // parameterize
   try {
+    console.log("This is the fetchEvents request")
+    console.log(req.body)
     const timeMin = new Date();
     const timeMax = new Date();
     timeMax.setDate(timeMax.getDate() + daysOut);

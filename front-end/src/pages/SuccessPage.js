@@ -105,6 +105,7 @@ function Dashboard() {
     <BasicButton buttonName={"Create Event"} type="submit"/>
     <BasicButton buttonName={"Create Group"} onClick={handleGroupAction} type="button" redirect={"/groupCreation"}/>
     <BasicButton buttonName={"Calculate Free Time"} onClick={handleFreeTime} type="button"/>
+    <BasicButton buttonName={"Testing Purposes"} onClick={handleSubmit} type="button"/>
   </Box>
   }
   

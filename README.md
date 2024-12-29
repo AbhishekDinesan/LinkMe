@@ -18,3 +18,8 @@ Integrated with Google Calendar & Google Auth.
 ## Database Diagramming
 
 ![alt text](image.png)
+
+## W.I.P
+1. Recongifuring fetchEvents to fetch on interval queries once clicking on a card
+2. find overlapping events, user associated, and map that onto the card
+3. add the add to calendar featuree

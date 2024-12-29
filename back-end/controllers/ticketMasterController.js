@@ -24,6 +24,7 @@ exports.queryEventsOnStartDate = async(req, res) => {
               size: req.query.numEvents,
             }
           });
+        
         const events = response.data._embedded.events.map(extractEventPayload);
         res.send(events)
     }

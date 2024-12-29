@@ -8,7 +8,9 @@ import Box from '@mui/material/Box';
 
 export default function GenericCard({
   name,
+  startingLocalDate,
   startingDateTime,
+  combinedStartDateTime,
   venue,
   city,
   country,
@@ -60,7 +62,7 @@ export default function GenericCard({
           </Typography>
           <Box style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <Typography variant="body2" style={{ color: '#555' }}>
-              <strong>Starting Time:</strong> {startingDateTime || 'TBD'}
+              <strong>Starting Time:</strong> {combinedStartDateTime || 'TBD'}
             </Typography>
             <Typography variant="body2" style={{ color: '#555' }}>
               <strong>Venue:</strong> {venue || 'TBD'}

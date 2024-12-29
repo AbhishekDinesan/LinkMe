@@ -1,662 +1,613 @@
 {
     "_embedded": {
-        "events": [
+      "events": [
+        {
+          "name": "New Years Eve 2024",
+          "type": "event",
+          "id": "rZ7HnEZ1Afv04N",
+          "test": false,
+          "url": "https://www.ticketweb.ca/event/new-years-eve-2024-pub-on-king-tickets/14064563",
+          "locale": "en-us",
+          "images": [
             {
-                "name": "San Antonio Spurs vs Phoenix Suns",
-                "type": "event",
-                "id": "G5dIZb8kECzK3",
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_3_2.jpg", 
+              "width": 640,
+              "height": 427,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RECOMENDATION_16_9.jpg",  
+              "width": 100,
+              "height": 56,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_EVENT_DETAIL_PAGE_16_9.jpg",
+              "width": 205,
+              "height": 115,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_16_9.jpg",
+              "width": 640,
+              "height": 360,
+              "fallback": true
+            },
+            {
+              "ratio": "4_3",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_CUSTOM.jpg",
+              "width": 305,
+              "height": 225,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_16_9.jpg",
+              "width": 1024,
+              "height": 576,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "width": 2048,
+              "height": 1152,
+              "fallback": true
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_LANDSCAPE_16_9.jpg",
+              "width": 1136,
+              "height": 639,
+              "fallback": true
+            },
+            {
+              "url": "https://i.ticketweb.com/i/00/12/75/08/33_Edp.jpg?v=5",
+              "width": 496,
+              "height": 427,
+              "fallback": false
+            },
+            {
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_3_2.jpg",
+              "width": 1024,
+              "height": 683,
+              "fallback": true
+            },
+            {
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_ARTIST_PAGE_3_2.jpg",     
+              "width": 305,
+              "height": 203,
+              "fallback": true
+            }
+          ],
+          "sales": {
+            "public": {
+              "startDateTime": "2024-12-09T17:00:00Z",
+              "startTBD": false,
+              "startTBA": false,
+              "endDateTime": "2024-12-31T23:00:00Z"
+            }
+          },
+          "dates": {
+            "access": {
+              "startDateTime": "2025-01-01T01:00:00Z",
+              "startApproximate": false,
+              "endDateTime": "2025-01-01T08:00:00Z",
+              "endApproximate": false
+            },
+            "start": {
+              "localDate": "2024-12-31",
+              "localTime": "20:00:00",
+              "dateTime": "2025-01-01T01:00:00Z",
+              "dateTBD": false,
+              "dateTBA": false,
+              "timeTBA": false,
+              "noSpecificTime": false
+            },
+            "end": {
+              "localDate": "2025-01-01",
+              "localTime": "03:00:00",
+              "dateTime": "2025-01-01T08:00:00Z",
+              "approximate": false,
+              "noSpecificTime": false
+            },
+            "timezone": "America/Toronto",
+            "status": {
+              "code": "onsale"
+            },
+            "spanMultipleDays": false
+          },
+          "classifications": [
+            {
+              "primary": true,
+              "segment": {
+                "id": "KZFzniwnSyZfZ7v7nJ",
+                "name": "Music"
+              },
+              "genre": {
+                "id": "KnvZfZ7vAvF",
+                "name": "Dance/Electronic"
+              },
+              "type": {
+                "id": "KZAyXgnZfZ7v7nI",
+                "name": "Undefined"
+              },
+              "subType": {
+                "id": "KZFzBErXgnZfZ7v7lJ",
+                "name": "Undefined"
+              },
+              "family": false
+            }
+          ],
+          "pleaseNote": "This event is 19 and over. Any ticket holder unable to present valid identification indicating that they are at least 19 years of age will not be admitted to this event, and will not be eligible for a refund.",
+          "priceRanges": [
+            {
+              "type": "standard",
+              "currency": "CAD",
+              "min": 18.95,
+              "max": 18.95
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "/discovery/v2/events/rZ7HnEZ1Afv04N?locale=en-us"
+            },
+            "venues": [
+              {
+                "href": "/discovery/v2/venues/rZ7HnEZ178Vvg?locale=en-us"
+              }
+            ]
+          },
+          "_embedded": {
+            "venues": [
+              {
+                "name": "Pub On King",
+                "type": "venue",
+                "id": "rZ7HnEZ178Vvg",
                 "test": false,
-                "url": "https://www.ticketmaster.com/san-antonio-spurs-vs-phoenix-suns-austin-texas-02-20-2025/event/3A006101A73B84D2",
+                "url": "https://www.ticketweb.ca/venue/pub-on-king-waterloo-on/434075",
                 "locale": "en-us",
-                "images": [
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_16_9.jpg",
-                        "width": 1024,
-                        "height": 576,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "3_2",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_3_2.jpg",
-                        "width": 1024,
-                        "height": 683,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_LANDSCAPE_16_9.jpg",
-                        "width": 1136,
-                        "height": 639,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_EVENT_DETAIL_PAGE_16_9.jpg",
-                        "width": 205,
-                        "height": 115,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_LARGE_16_9.jpg",
-                        "width": 2048,
-                        "height": 1152,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_SOURCE",
-                        "width": 2426,
-                        "height": 1365,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "4_3",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_CUSTOM.jpg",
-                        "width": 305,
-                        "height": 225,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RECOMENDATION_16_9.jpg",
-                        "width": 100,
-                        "height": 56,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "3_2",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_ARTIST_PAGE_3_2.jpg",
-                        "width": 305,
-                        "height": 203,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "16_9",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_PORTRAIT_16_9.jpg",
-                        "width": 640,
-                        "height": 360,
-                        "fallback": false
-                    },
-                    {
-                        "ratio": "3_2",
-                        "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_PORTRAIT_3_2.jpg",
-                        "width": 640,
-                        "height": 427,
-                        "fallback": false
-                    }
-                ],
-                "sales": {
-                    "public": {
-                        "startDateTime": "2024-08-16T15:00:00Z",
-                        "startTBD": false,
-                        "startTBA": false,
-                        "endDateTime": "2025-02-21T03:30:00Z"
-                    },
-                    "presales": [
-                        {
-                            "startDateTime": "2024-08-15T22:00:00Z",
-                            "endDateTime": "2024-08-16T14:45:00Z",
-                            "name": "Moody Center Venue Presale"
-                        },
-                        {
-                            "startDateTime": "2024-08-15T21:00:00Z",
-                            "endDateTime": "2024-08-16T14:45:00Z",
-                            "name": "Moody Center Member Presale"
-                        },
-                        {
-                            "startDateTime": "2024-08-15T20:00:00Z",
-                            "endDateTime": "2024-08-16T14:59:00Z",
-                            "name": "Spurs Fan Club/Ticketmaster/Frost Bank"
-                        }
-                    ]
+                "postalCode": "N2J 2X3",
+                "timezone": "America/Toronto",
+                "city": {
+                  "name": "Waterloo"
                 },
-                "dates": {
-                    "start": {
-                        "localDate": "2025-02-20",
-                        "localTime": "20:30:00",
-                        "dateTime": "2025-02-21T02:30:00Z",
-                        "dateTBD": false,
-                        "dateTBA": false,
-                        "timeTBA": false,
-                        "noSpecificTime": false
-                    },
-                    "timezone": "America/Chicago",
-                    "status": {
-                        "code": "onsale"
-                    },
-                    "spanMultipleDays": false
+                "state": {
+                  "name": "Ontario",
+                  "stateCode": "ON"
                 },
-                "classifications": [
-                    {
-                        "primary": true,
-                        "segment": {
-                            "id": "KZFzniwnSyZfZ7v7nE",
-                            "name": "Sports"
-                        },
-                        "genre": {
-                            "id": "KnvZfZ7vAde",
-                            "name": "Basketball"
-                        },
-                        "subGenre": {
-                            "id": "KZazBEonSMnZfZ7vFJA",
-                            "name": "NBA"
-                        },
-                        "type": {
-                            "id": "KZAyXgnZfZ7v7l1",
-                            "name": "Group"
-                        },
-                        "subType": {
-                            "id": "KZFzBErXgnZfZ7vA7d",
-                            "name": "Team"
-                        },
-                        "family": false
-                    }
-                ],
-                "promoter": {
-                    "id": "694",
-                    "name": "NBA EXHIBITION & PRESEASON",
-                    "description": "NBA EXHIBITION & PRESEASON / NTL / USA"
+                "country": {
+                  "name": "Canada",
+                  "countryCode": "CA"
                 },
-                "promoters": [
-                    {
-                        "id": "694",
-                        "name": "NBA EXHIBITION & PRESEASON",
-                        "description": "NBA EXHIBITION & PRESEASON / NTL / USA"
-                    }
-                ],
-                "priceRanges": [
-                    {
-                        "type": "standard",
-                        "currency": "USD",
-                        "min": 110,
-                        "max": 2371
-                    }
-                ],
-                "products": [
-                    {
-                        "name": "PARKWHIZ MOODY CENTER ATX",
-                        "id": "G5dIZb81rXUSg",
-                        "url": "https://www.ticketmaster.com/parkwhiz-moody-center-atx-austin-texas-02-20-2025/event/3A0061029EFB6CF5",
-                        "type": "Upsell",
-                        "classifications": [
-                            {
-                                "primary": true,
-                                "segment": {
-                                    "id": "KZFzniwnSyZfZ7v7n1",
-                                    "name": "Miscellaneous"
-                                },
-                                "genre": {
-                                    "id": "KnvZfZ7v7ll",
-                                    "name": "Undefined"
-                                },
-                                "subGenre": {
-                                    "id": "KZazBEonSMnZfZ7vAv1",
-                                    "name": "Undefined"
-                                },
-                                "type": {
-                                    "id": "KZAyXgnZfZ7vAva",
-                                    "name": "Parking"
-                                },
-                                "subType": {
-                                    "id": "KZFzBErXgnZfZ7vAFe",
-                                    "name": "Regular"
-                                },
-                                "family": false
-                            }
-                        ]
-                    }
-                ],
-                "seatmap": {
-                    "staticUrl": "https://mapsapi.tmol.io/maps/geometry/3/event/3A006101A73B84D2/staticImage?type=png&systemId=HOST",
-                    "id": "seatmap"
+                "address": {
+                  "line1": "77 King Street North"
                 },
-                "accessibility": {
-                    "ticketLimit": 4,
-                    "id": "accessibility"
+                "location": {
+                  "longitude": "-80.523407",
+                  "latitude": "43.467809"
                 },
-                "ticketLimit": {
-                    "info": "There is an overall 8 ticket limit for this event.",
-                    "id": "ticketLimit"
-                },
-                "ageRestrictions": {
-                    "legalAgeEnforced": false,
-                    "id": "ageRestrictions"
-                },
-                "ticketing": {
-                    "safeTix": {
-                        "enabled": true
-                    },
-                    "allInclusivePricing": {
-                        "enabled": false
-                    },
-                    "id": "ticketing"
+                "upcomingEvents": {
+                  "ticketweb": 1,
+                  "_total": 1,
+                  "_filtered": 0
                 },
                 "_links": {
-                    "self": {
-                        "href": "/discovery/v2/events/G5dIZb8kECzK3?locale=en-us"
-                    },
-                    "attractions": [
-                        {
-                            "href": "/discovery/v2/attractions/K8vZ9171ov0?locale=en-us"
-                        },
-                        {
-                            "href": "/discovery/v2/attractions/K8vZ9171oZf?locale=en-us"
-                        }
-                    ],
-                    "venues": [
-                        {
-                            "href": "/discovery/v2/venues/KovZ917ANwG?locale=en-us"
-                        }
-                    ]
-                },
-                "_embedded": {
-                    "venues": [
-                        {
-                            "name": "Moody Center ATX",
-                            "type": "venue",
-                            "id": "KovZ917ANwG",
-                            "test": false,
-                            "url": "https://www.ticketmaster.com/moody-center-atx-tickets-austin/venue/476228",
-                            "locale": "en-us",
-                            "images": [
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dbimages/22076v.jpg",
-                                    "width": 205,
-                                    "height": 115,
-                                    "fallback": false
-                                }
-                            ],
-                            "postalCode": "78712",
-                            "timezone": "America/Chicago",
-                            "city": {
-                                "name": "Austin"
-                            },
-                            "state": {
-                                "name": "Texas",
-                                "stateCode": "TX"
-                            },
-                            "country": {
-                                "name": "United States Of America",
-                                "countryCode": "US"
-                            },
-                            "address": {
-                                "line1": "2001 Robert Dedman Drive"
-                            },
-                            "location": {
-                                "longitude": "-97.730837",
-                                "latitude": "30.280735"
-                            },
-                            "markets": [
-                                {
-                                    "name": "San Antonio and Austin",
-                                    "id": "40"
-                                }
-                            ],
-                            "dmas": [
-                                {
-                                    "id": 222
-                                },
-                                {
-                                    "id": 379
-                                },
-                                {
-                                    "id": 380
-                                }
-                            ],
-                            "upcomingEvents": {
-                                "tmr": 23,
-                                "ticketmaster": 35,
-                                "_total": 58,
-                                "_filtered": 0
-                            },
-                            "_links": {
-                                "self": {
-                                    "href": "/discovery/v2/venues/KovZ917ANwG?locale=en-us"
-                                }
-                            }
-                        }
-                    ],
-                    "attractions": [
-                        {
-                            "name": "San Antonio Spurs",
-                            "type": "attraction",
-                            "id": "K8vZ9171ov0",
-                            "test": false,
-                            "url": "https://www.ticketmaster.com/san-antonio-spurs-tickets/artist/806012",
-                            "locale": "en-us",
-                            "externalLinks": {
-                                "twitter": [
-                                    {
-                                        "url": "https://twitter.com/spurs"
-                                    }
-                                ],
-                                "facebook": [
-                                    {
-                                        "url": "https://www.facebook.com/Spurs"
-                                    }
-                                ],
-                                "wiki": [
-                                    {
-                                        "url": "https://en.wikipedia.org/wiki/San_Antonio_Spurs"
-                                    }
-                                ],
-                                "instagram": [
-                                    {
-                                        "url": "https://www.instagram.com/spurs/"
-                                    }
-                                ],
-                                "homepage": [
-                                    {
-                                        "url": "https://www.nba.com/spurs/"
-                                    }
-                                ]
-                            },
-                            "aliases": [
-                                "san antonio spurs ticket exchange",
-                                "spurs exchange",
-                                "spurs ticket exchange"
-                            ],
-                            "images": [
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_16_9.jpg",
-                                    "width": 1024,
-                                    "height": 576,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_3_2.jpg",
-                                    "width": 1024,
-                                    "height": 683,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_LANDSCAPE_16_9.jpg",
-                                    "width": 1136,
-                                    "height": 639,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_EVENT_DETAIL_PAGE_16_9.jpg",
-                                    "width": 205,
-                                    "height": 115,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_TABLET_LANDSCAPE_LARGE_16_9.jpg",
-                                    "width": 2048,
-                                    "height": 1152,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_SOURCE",
-                                    "width": 2426,
-                                    "height": 1365,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "4_3",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_CUSTOM.jpg",
-                                    "width": 305,
-                                    "height": 225,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RECOMENDATION_16_9.jpg",
-                                    "width": 100,
-                                    "height": 56,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_ARTIST_PAGE_3_2.jpg",
-                                    "width": 305,
-                                    "height": 203,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_PORTRAIT_16_9.jpg",
-                                    "width": 640,
-                                    "height": 360,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/455/612b13a2-822a-4cda-9920-098692170455_RETINA_PORTRAIT_3_2.jpg",
-                                    "width": 640,
-                                    "height": 427,
-                                    "fallback": false
-                                }
-                            ],
-                            "classifications": [
-                                {
-                                    "primary": true,
-                                    "segment": {
-                                        "id": "KZFzniwnSyZfZ7v7nE",
-                                        "name": "Sports"
-                                    },
-                                    "genre": {
-                                        "id": "KnvZfZ7vAde",
-                                        "name": "Basketball"
-                                    },
-                                    "subGenre": {
-                                        "id": "KZazBEonSMnZfZ7vFJA",
-                                        "name": "NBA"
-                                    },
-                                    "type": {
-                                        "id": "KZAyXgnZfZ7v7l1",
-                                        "name": "Group"
-                                    },
-                                    "subType": {
-                                        "id": "KZFzBErXgnZfZ7vA7d",
-                                        "name": "Team"
-                                    },
-                                    "family": false
-                                }
-                            ],
-                            "upcomingEvents": {
-                                "tmr": 6,
-                                "ticketmaster": 47,
-                                "_total": 53,
-                                "_filtered": 0
-                            },
-                            "_links": {
-                                "self": {
-                                    "href": "/discovery/v2/attractions/K8vZ9171ov0?locale=en-us"
-                                }
-                            }
-                        },
-                        {
-                            "name": "Phoenix Suns",
-                            "type": "attraction",
-                            "id": "K8vZ9171oZf",
-                            "test": false,
-                            "url": "https://www.ticketmaster.com/phoenix-suns-tickets/artist/806004",
-                            "locale": "en-us",
-                            "externalLinks": {
-                                "twitter": [
-                                    {
-                                        "url": "https://twitter.com/Suns"
-                                    }
-                                ],
-                                "facebook": [
-                                    {
-                                        "url": "https://www.facebook.com/suns/"
-                                    }
-                                ],
-                                "wiki": [
-                                    {
-                                        "url": "https://en.wikipedia.org/wiki/Phoenix_Suns"
-                                    }
-                                ],
-                                "instagram": [
-                                    {
-                                        "url": "https://www.instagram.com/suns/"
-                                    }
-                                ],
-                                "homepage": [
-                                    {
-                                        "url": "https://www.nba.com/suns/"
-                                    }
-                                ]
-                            },
-                            "aliases": [
-                                "phoenix",
-                                "suns",
-                                "phoenix suns exchange",
-                                "phoenix suns team exchange",
-                                "phoenix suns season ticket holders",
-                                "phoenix suns season tix holders",
-                                "phoenix suns ticket exchange",
-                                "suns exchange",
-                                "suns season ticket holders",
-                                "suns season tix holders",
-                                "suns team exchange",
-                                "suns ticket exchange"
-                            ],
-                            "images": [
-                                {
-                                    "ratio": "4_3",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_CUSTOM.jpg",
-                                    "width": 305,
-                                    "height": 225,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_RETINA_PORTRAIT_16_9.jpg",
-                                    "width": 640,
-                                    "height": 360,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_EVENT_DETAIL_PAGE_16_9.jpg",
-                                    "width": 205,
-                                    "height": 115,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_ARTIST_PAGE_3_2.jpg",
-                                    "width": 305,
-                                    "height": 203,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_TABLET_LANDSCAPE_16_9.jpg",
-                                    "width": 1024,
-                                    "height": 576,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_RETINA_PORTRAIT_3_2.jpg",
-                                    "width": 640,
-                                    "height": 427,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "3_2",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_TABLET_LANDSCAPE_3_2.jpg",
-                                    "width": 1024,
-                                    "height": 683,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_RETINA_LANDSCAPE_16_9.jpg",
-                                    "width": 1136,
-                                    "height": 639,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_RECOMENDATION_16_9.jpg",
-                                    "width": 100,
-                                    "height": 56,
-                                    "fallback": false
-                                },
-                                {
-                                    "ratio": "16_9",
-                                    "url": "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_SOURCE",
-                                    "width": 2048,
-                                    "height": 1152,
-                                    "fallback": false
-                                }
-                            ],
-                            "classifications": [
-                                {
-                                    "primary": true,
-                                    "segment": {
-                                        "id": "KZFzniwnSyZfZ7v7nE",
-                                        "name": "Sports"
-                                    },
-                                    "genre": {
-                                        "id": "KnvZfZ7vAde",
-                                        "name": "Basketball"
-                                    },
-                                    "subGenre": {
-                                        "id": "KZazBEonSMnZfZ7vFJA",
-                                        "name": "NBA"
-                                    },
-                                    "type": {
-                                        "id": "KZAyXgnZfZ7v7l1",
-                                        "name": "Group"
-                                    },
-                                    "subType": {
-                                        "id": "KZFzBErXgnZfZ7vA7d",
-                                        "name": "Team"
-                                    },
-                                    "family": false
-                                }
-                            ],
-                            "upcomingEvents": {
-                                "tmr": 4,
-                                "ticketmaster": 52,
-                                "_total": 56,
-                                "_filtered": 0
-                            },
-                            "_links": {
-                                "self": {
-                                    "href": "/discovery/v2/attractions/K8vZ9171oZf?locale=en-us"
-                                }
-                            }
-                        }
-                    ]
+                  "self": {
+                    "href": "/discovery/v2/venues/rZ7HnEZ178Vvg?locale=en-us"
+                  }
                 }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Melissa Etheridge",
+          "type": "event",
+          "id": "Z7r9jZ1A78Uvw",
+          "test": false,
+          "url": "https://www.ticketmaster.com/event/Z7r9jZ1A78Uvw",
+          "locale": "en-us",
+          "images": [
+            {
+              "ratio": "4_3",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_CUSTOM.jpg",
+              "width": 305,
+              "height": 225,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RECOMENDATION_16_9.jpg",
+              "width": 100,
+              "height": 56,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_PORTRAIT_16_9.jpg",       
+              "width": 640,
+              "height": 360,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_EVENT_DETAIL_PAGE_16_9.jpg",     
+              "width": 205,
+              "height": 115,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "width": 2048,
+              "height": 1152,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_SOURCE",
+              "width": 2426,
+              "height": 1365,
+              "fallback": false
+            },
+            {
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_PORTRAIT_3_2.jpg",        
+              "width": 640,
+              "height": 427,
+              "fallback": false
+            },
+            {
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_ARTIST_PAGE_3_2.jpg",
+              "width": 305,
+              "height": 203,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_LANDSCAPE_16_9.jpg",      
+              "width": 1136,
+              "height": 639,
+              "fallback": false
+            },
+            {
+              "ratio": "16_9",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_16_9.jpg",      
+              "width": 1024,
+              "height": 576,
+              "fallback": false
+            },
+            {
+              "ratio": "3_2",
+              "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_3_2.jpg",       
+              "width": 1024,
+              "height": 683,
+              "fallback": false
             }
-        ]
+          ],
+          "sales": {
+            "public": {
+              "startDateTime": "1900-01-01T06:00:00Z",
+              "startTBD": false,
+              "startTBA": false,
+              "endDateTime": "2025-04-05T00:00:00Z"
+            }
+          },
+          "dates": {
+            "start": {
+              "localDate": "2025-04-04",
+              "localTime": "20:00:00",
+              "dateTime": "2025-04-05T00:00:00Z",
+              "dateTBD": false,
+              "dateTBA": false,
+              "timeTBA": false,
+              "noSpecificTime": false
+            },
+            "status": {
+              "code": "onsale"
+            },
+            "spanMultipleDays": false
+          },
+          "classifications": [
+            {
+              "primary": true,
+              "segment": {
+                "id": "KZFzniwnSyZfZ7v7nJ",
+                "name": "Music"
+              },
+              "genre": {
+                "id": "KnvZfZ7vAev",
+                "name": "Pop"
+              },
+              "subGenre": {
+                "id": "KZazBEonSMnZfZ7vk1l",
+                "name": "Adult Contemporary"
+              },
+              "family": false
+            }
+          ],
+          "outlets": [
+            {
+              "url": "https://dellagoresort.com/entertainment/the-vine/",
+              "type": "venueBoxOffice"
+            },
+            {
+              "url": "https://www.ticketmaster.com/melissa-etheridge-waterloo-new-york-04-04-2025/event/Zu0FM1R0e5FaLDH",    
+              "type": "tmMarketPlace"
+            }
+          ],
+          "seatmap": {
+            "staticUrl": "https://content.resale.ticketmaster.com/graphics/TMResale/2/VenueMaps/12742-0-0-1-TheVineTheateratDelLagoResortandCasino77473.png",
+            "id": "seatmap"
+          },
+          "ticketing": {
+            "allInclusivePricing": {
+              "enabled": true
+            },
+            "id": "ticketing"
+          },
+          "_links": {
+            "self": {
+              "href": "/discovery/v2/events/Z7r9jZ1A78Uvw?locale=en-us"
+            },
+            "attractions": [
+              {
+                "href": "/discovery/v2/attractions/K8vZ91712f0?locale=en-us"
+              }
+            ],
+            "venues": [
+              {
+                "href": "/discovery/v2/venues/Z7r9jZad6k?locale=en-us"
+              }
+            ]
+          },
+          "_embedded": {
+            "venues": [
+              {
+                "name": "The Vine Theater at Del Lago Resort & Casino",
+                "type": "venue",
+                "id": "Z7r9jZad6k",
+                "test": false,
+                "locale": "en-us",
+                "postalCode": "13165",
+                "timezone": "America/New_York",
+                "city": {
+                  "name": "Waterloo"
+                },
+                "state": {
+                  "name": "New York",
+                  "stateCode": "NY"
+                },
+                "country": {
+                  "name": "United States Of America",
+                  "countryCode": "US"
+                },
+                "address": {
+                  "line1": "1133 State Route 414,  Waterloo,  NY  13165"
+                },
+                "location": {
+                  "longitude": "-76.890404000",
+                  "latitude": "42.945400000"
+                },
+                "dmas": [
+                  {
+                    "id": 394
+                  }
+                ],
+                "upcomingEvents": {
+                  "tmr": 2,
+                  "_total": 2,
+                  "_filtered": 0
+                },
+                "_links": {
+                  "self": {
+                    "href": "/discovery/v2/venues/Z7r9jZad6k?locale=en-us"
+                  }
+                }
+              }
+            ],
+            "attractions": [
+              {
+                "name": "Melissa Etheridge",
+                "type": "attraction",
+                "id": "K8vZ91712f0",
+                "test": false,
+                "url": "https://www.ticketmaster.com/melissa-etheridge-tickets/artist/735024",
+                "locale": "en-us",
+                "externalLinks": {
+                  "youtube": [
+                    {
+                      "url": "https://www.youtube.com/channel/UCUmm-xpEYJfwvc2RrfJIV4g"
+                    }
+                  ],
+                  "twitter": [
+                    {
+                      "url": "https://twitter.com/metheridge"
+                    }
+                  ],
+                  "itunes": [
+                    {
+                      "url": "https://music.apple.com/us/artist/melissa-etheridge/117519"
+                    }
+                  ],
+                  "lastfm": [
+                    {
+                      "url": "http://www.last.fm/music/Melissa+Etheridge"
+                    }
+                  ],
+                  "spotify": [
+                    {
+                      "url": "https://open.spotify.com/artist/01Ppu7N8uYJI8SAONo2YZA?autoplay=true"
+                    }
+                  ],
+                  "facebook": [
+                    {
+                      "url": "https://www.facebook.com/MelissaEtheridge"
+                    }
+                  ],
+                  "wiki": [
+                    {
+                      "url": "https://en.wikipedia.org/wiki/Melissa_Etheridge"
+                    }
+                  ],
+                  "instagram": [
+                    {
+                      "url": "https://www.instagram.com/melissa_etheridge/"
+                    }
+                  ],
+                  "musicbrainz": [
+                    {
+                      "id": "b3ae82c2-e60b-4551-a76d-6620f1b456aa",
+                      "url": "https://musicbrainz.org/artist/b3ae82c2-e60b-4551-a76d-6620f1b456aa"
+                    }
+                  ],
+                  "homepage": [
+                    {
+                      "url": "https://www.melissaetheridge.com/splash"
+                    }
+                  ]
+                },
+                "images": [
+                  {
+                    "ratio": "4_3",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_CUSTOM.jpg",
+                    "width": 305,
+                    "height": 225,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RECOMENDATION_16_9.jpg",   
+                    "width": 100,
+                    "height": 56,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_PORTRAIT_16_9.jpg", 
+                    "width": 640,
+                    "height": 360,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_EVENT_DETAIL_PAGE_16_9.jpg",
+                    "width": 205,
+                    "height": 115,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                    "width": 2048,
+                    "height": 1152,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_SOURCE",
+                    "width": 2426,
+                    "height": 1365,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "3_2",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_PORTRAIT_3_2.jpg",  
+                    "width": 640,
+                    "height": 427,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "3_2",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_ARTIST_PAGE_3_2.jpg",      
+                    "width": 305,
+                    "height": 203,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_RETINA_LANDSCAPE_16_9.jpg",
+                    "width": 1136,
+                    "height": 639,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "16_9",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_16_9.jpg",
+                    "width": 1024,
+                    "height": 576,
+                    "fallback": false
+                  },
+                  {
+                    "ratio": "3_2",
+                    "url": "https://s1.ticketm.net/dam/a/647/c0e0680d-ff42-4e05-9faf-0ab842c7a647_TABLET_LANDSCAPE_3_2.jpg", 
+                    "width": 1024,
+                    "height": 683,
+                    "fallback": false
+                  }
+                ],
+                "classifications": [
+                  {
+                    "primary": true,
+                    "segment": {
+                      "id": "KZFzniwnSyZfZ7v7nJ",
+                      "name": "Music"
+                    },
+                    "genre": {
+                      "id": "KnvZfZ7vAeA",
+                      "name": "Rock"
+                    },
+                    "subGenre": {
+                      "id": "KZazBEonSMnZfZ7v6F1",
+                      "name": "Pop"
+                    },
+                    "type": {
+                      "id": "KZAyXgnZfZ7v7nI",
+                      "name": "Undefined"
+                    },
+                    "subType": {
+                      "id": "KZFzBErXgnZfZ7v7lJ",
+                      "name": "Undefined"
+                    },
+                    "family": false
+                  }
+                ],
+                "upcomingEvents": {
+                  "tmr": 21,
+                  "mfx-nl": 2,
+                  "ticketmaster": 37,
+                  "mfx-de": 1,
+                  "_total": 61,
+                  "_filtered": 0
+                },
+                "_links": {
+                  "self": {
+                    "href": "/discovery/v2/attractions/K8vZ91712f0?locale=en-us"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
     },
     "_links": {
-        "first": {
-            "href": "/discovery/v2/events.json?page=0&size=1"
-        },
-        "self": {
-            "href": "/discovery/v2/events.json?size=1"
-        },
-        "next": {
-            "href": "/discovery/v2/events.json?page=1&size=1"
-        },
-        "last": {
-            "href": "/discovery/v2/events.json?page=232843&size=1"
-        }
+      "self": {
+        "href": "/discovery/v2/events.json?size=10&city=Waterloo"
+      }
     },
     "page": {
-        "size": 1,
-        "totalElements": 232844,
-        "totalPages": 232844,
-        "number": 0
+      "size": 10,
+      "totalElements": 2,
+      "totalPages": 1,
+      "number": 0
     }
-}
+  }

@@ -36,7 +36,18 @@ const GroupCreationPage = () => {
             'Content-Type': 'application/json',
           },
         });
-        setAllUsers(response.data);  // Set all users here
+        setAllUsers(response.data);  // Set all users here, for each user can you iterate over all events
+        const response2 = await axios.get('/api/fetch-events', {
+          params: {
+            querystartDateTime: " ",
+            queryEndDateTime: " ",
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log("HERE IS YOUR EVENT DATA")
+        console.log(response2)
       } catch (exception) {
         console.error(exception);
       }

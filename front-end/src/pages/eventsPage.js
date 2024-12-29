@@ -121,27 +121,31 @@ const EventsPage = () => {
             gap: 2,
           }}
         >
-          {events.map((event, index) => (
-            <Box
-              key={event.id}
-              sx={{
-                minWidth: 300,
-                cursor: 'pointer',
-              }}
-              onClick={() => handleCardClick(index)}
-            >
+          {events.map((event, index) => {
+            console.log('Event:', event);
+            return(
+              <Box
+                key={event.id}
+                sx={{
+                  minWidth: 300,
+                  cursor: 'pointer',
+                }}
+                onClick={() => handleCardClick(index)}
+              >
               <GenericCard
                 name={event.name}
                 startingDateTime={event.startingDateTime}
+                startingLocalDate={event.startingLocalDate}
+                combinedStartDateTime={event.combinedStartDateTime}
                 venue={event.venue}
                 city={event.city}
                 country={event.country}
                 eventUrl={event.url}
                 eventGenre={event.eventGenre}
-                imageUrl={event.imageUrl || 'defaultImageURL'}
+                imageUrl={event.imageUrl || 'defaultImageURL'} // add a default
               />
             </Box>
-          ))}
+          )})}
         </Box>
       </Box>
 
