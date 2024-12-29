@@ -44,6 +44,12 @@ async function fetchUsersInAGroup(group_id){
     return result.rows;
 }
 
+async function fetchUserNamefromUserId(user_id){
+    const fetchUserQuery = readSqlFile('../sql/users/fetchUserNameFromId.sql');
+    const result = await(pool.query(fetchUserQuery, [user_id])); 
+    return result.rows;
+}
+
 async function insertEventsTable(user_id, events_object) {
     try {
         const user = await fetchInternalUserId(user_id);
@@ -60,4 +66,4 @@ async function insertEventsTable(user_id, events_object) {
     }
 };
 
-module.exports = {insertUserTable, insertEventsTable, fetchNameOfUsers, fetchUserIdFromName, fetchUsersInAGroup}
+module.exports = {insertUserTable, insertEventsTable, fetchNameOfUsers, fetchUserIdFromName, fetchUsersInAGroup, fetchUserNamefromUserId}

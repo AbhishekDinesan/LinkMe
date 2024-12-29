@@ -1,5 +1,5 @@
 const {createGroup} = require('../models/groupModel');
-const {fetchNameOfUsers, fetchUserIdFromName,fetchUsersInAGroup} = require('../database/insertTable')
+const {fetchNameOfUsers, fetchUserIdFromName,fetchUsersInAGroup, fetchUserNamefromUserId} = require('../database/insertTable')
 
 exports.createGroups = async (req, res) => {
     try{
@@ -37,4 +37,11 @@ exports.fetchUsersInGroup = async(req,res) =>{
     user_array.push(row.user_id);
   }
   res.send(user_array)
+}
+
+exports.fetchNameFromUserId = async(req, res) => {
+  const user_id = req.query.user_id;
+  console.log("User Id", req.query.user_id)
+  const response = await fetchUserNamefromUserId(user_id)
+  res.send(response);
 }

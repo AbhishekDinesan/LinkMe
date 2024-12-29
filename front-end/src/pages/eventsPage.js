@@ -28,12 +28,21 @@ const EventsPage = () => {
 
   const getGroupDataFromCookie = async () => {
     const groupId = Cookies.get('groupId');
-    console.log("This is my group Id", groupId)
-    const response = await axios.get('/api/fetch-users-in-group',{
+    const userIdResponse = await axios.get('/api/fetch-users-in-group',{
       headers: { 'Content-Type': 'application/json' },
       params: { group_id: Cookies.get('groupId') },
     })
-    console.log("This is your response. User Id's are ", response.data)
+    const userIdList = userIdResponse.data;
+    console.log("userIdList", userIdList)
+    const userNameList = [];
+    for (const id of userIdList){
+      const userName = await axios.get('api/fetch-usernames-from-id', {
+        headers: { 'Content-Type': 'application/json' },
+        params: { user_id: id},
+      })
+      userNameList.push(userName.data[0].name)
+    }
+    console.log(userNameList)
     return groupId ? JSON.parse(groupId) : null;
   };
 
