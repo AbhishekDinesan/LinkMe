@@ -15,7 +15,7 @@ Integrated with Google Calendar & Google Auth.
 - **Other stuff:** Google Calendar API, Google OAuth 2, TicketMaster API
 
 
-## Database Diagramming
+## Database Diagram
 
 ![alt text](image.png)
 

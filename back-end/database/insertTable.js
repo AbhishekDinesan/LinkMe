@@ -49,7 +49,6 @@ async function insertEventsTable(user_id, events_object) {
 
         const values = [internalUserID, startTimeUTC, endTimeUTC, events_object.id];
         const result = await pool.query(insertEvents, values);
-        console.log("Event inserted successfully:", result.rows[0]);
     } catch (error) {
         console.error("Error inserting into event table:", error);
     }

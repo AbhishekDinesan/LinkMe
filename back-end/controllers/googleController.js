@@ -17,31 +17,25 @@ exports.retrieveGoogleID = async() =>{
 const calendar = google.calendar('v3');
 
 exports.fetchEvents = async (req, res, next) => {
-  const daysOut = 14; // parameterize
   try {
-    console.log("This is the fetchEvents request")
-    console.log(req.body)
-    const timeMin = new Date();
-    const timeMax = new Date();
-    timeMax.setDate(timeMax.getDate() + daysOut);
-
+    const startDate = new Date(req.query.querystartDateTime);
+    const isoStartDate = startDate.toISOString();
+    const endDate = new Date(req.query.queryEndDateTime);
+    const isoEndDate = endDate.toISOString();
     const response = await calendar.events.list({
       auth: oauth2Client,
       calendarId: 'primary', 
-      timeMin: timeMin.toISOString(), 
-      timeMax: timeMax.toISOString(),
+      timeMin: isoStartDate, 
+      timeMax: isoEndDate,
       maxResults: 100, 
       singleEvents: true, 
       orderBy: 'startTime', 
     });
     oauth2Client.setCredentials(await oauth2Client.credentials);
-
     const { data: userInfo } = await google.oauth2('v2').userinfo.get({
         auth: oauth2Client
     });
-
     const events = response.data.items;
-    console.log(events)
     for (const event of events){
       await insertEventsTable(userInfo.id, event); // user id, info about the event
     }
