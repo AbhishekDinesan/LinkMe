@@ -1,0 +1,1 @@
+SELECT user_id FROM user_group WHERE group_id = $1

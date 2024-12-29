@@ -26,8 +26,14 @@ const EventsPage = () => {
 
   var groupId = null;
 
-  const getGroupDataFromCookie = () => {
+  const getGroupDataFromCookie = async () => {
     const groupId = Cookies.get('groupId');
+    console.log("This is my group Id", groupId)
+    const response = await axios.get('/api/fetch-users-in-group',{
+      headers: { 'Content-Type': 'application/json' },
+      params: { group_id: Cookies.get('groupId') },
+    })
+    console.log("This is your response. User Id's are ", response.data)
     return groupId ? JSON.parse(groupId) : null;
   };
 
@@ -122,7 +128,6 @@ const EventsPage = () => {
           }}
         >
           {events.map((event, index) => {
-            console.log('Event:', event);
             return(
               <Box
                 key={event.id}

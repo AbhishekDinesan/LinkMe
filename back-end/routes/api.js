@@ -12,6 +12,7 @@ router.post('/create-groups', groupController.createGroups);
 router.get('/fetch-users', groupController.fetchUsers);
 router.get('/fetch-generic-events', TMController.genericEvents) // make a new ticker master controller
 router.get('/fetch-start-date-events', TMController.queryEventsOnStartDate)
+router.get('/fetch-users-in-group', groupController.fetchUsersInGroup)
 
 
 module.exports = router;
