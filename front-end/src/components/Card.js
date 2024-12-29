@@ -5,6 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 export default function GenericCard({
   name,
@@ -17,7 +23,15 @@ export default function GenericCard({
   eventUrl,
   eventGenre,
   imageUrl,
+  userNames,
 }) {
+  const [expanded, setExpanded] = React.useState(false);
+
+  // Toggle card expansion
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <Card
       style={{
@@ -79,6 +93,36 @@ export default function GenericCard({
           </Box>
         </CardContent>
       </CardActionArea>
+
+      {/* Expand Icon */}
+      <IconButton
+        onClick={handleExpandClick}
+        style={{
+          transition: 'transform 0.3s',
+          transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+        }}
+      >
+      </IconButton>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography
+            variant="h6"
+            style={{ textAlign: 'center', color: '#1976d2' }}
+          >
+            User Availability
+          </Typography>
+          <List>
+            {userNames.map((user, index) => (
+              <ListItem key={index}>
+                <ListItemText
+                  primary={user.name}
+                  secondary={user.isAvailable ? 'Available' : 'Not Available'}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </CardContent>
+      </Collapse>
     </Card>
   );
 }

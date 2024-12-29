@@ -19,12 +19,16 @@ import Cookies from 'js-cookie';
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
+  const [group, setGroup] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
   const [selectedYear, setSelectedYear] = useState('2025');
   const [selectedMonth, setSelectedMonth] = useState('January');
   const [selectedDay, setSelectedDay] = useState('1');
 
   var groupId = null;
+  const [userNameList, setUserNameList] = useState([]);
+  const [userIdList, setUserIdList] = useState([]);
+  
 
   const getGroupDataFromCookie = async () => {
     const groupId = Cookies.get('groupId');
@@ -32,18 +36,19 @@ const EventsPage = () => {
       headers: { 'Content-Type': 'application/json' },
       params: { group_id: Cookies.get('groupId') },
     })
-    const userIdList = userIdResponse.data;
-    console.log("userIdList", userIdList)
-    const userNameList = [];
-    for (const id of userIdList){
-      const userName = await axios.get('api/fetch-usernames-from-id', {
-        headers: { 'Content-Type': 'application/json' },
-        params: { user_id: id},
+    const userIds = userIdResponse.data;
+    setUserIdList(userIds)
+    const userNames = await Promise.all(
+      userIds.map(async (id) => {
+        const userNameResponse = await axios.get('/api/fetch-usernames-from-id', {
+          headers: { 'Content-Type': 'application/json' },
+          params: { user_id: id },
+        });
+        return userNameResponse.data[0].name;
       })
-      userNameList.push(userName.data[0].name)
-    }
-    console.log(userNameList)
-    return groupId ? JSON.parse(groupId) : null;
+    );
+    setUserNameList(userNames);
+    return groupId;
   };
 
   const fetchEvents = async () => {
@@ -57,7 +62,7 @@ const EventsPage = () => {
         params: { startDate: selectedDate, numEvents: 20 },
       });
       console.log(response.data);
-      groupId = getGroupDataFromCookie();
+      groupId = await getGroupDataFromCookie();
       console.log("Does the groupId persist" + groupId);
       setEvents(response.data);
     } catch (error) {
@@ -156,69 +161,83 @@ const EventsPage = () => {
                 country={event.country}
                 eventUrl={event.url}
                 eventGenre={event.eventGenre}
-                imageUrl={event.imageUrl || 'defaultImageURL'} // add a default
+                imageUrl={event.imageUrl || 'defaultImageURL'} // add a default image
+                userNames={(() => {
+                  console.log('userNameList:', userNameList); // Log the userNameList
+                  return userNameList;
+                })()}
+                userIds={userIdList}
               />
             </Box>
           )})}
         </Box>
       </Box>
-
       {expandedCard !== null && (
-        <Modal open={true} onClose={handleClose}>
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '80%',
-              maxWidth: 500,
-              bgcolor: 'background.paper',
-              borderRadius: 2,
-              boxShadow: 24,
-              p: 2,
-            }}
+  <Modal open={true} onClose={handleClose}>
+    <Box
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '80%',
+        maxWidth: 500,
+        bgcolor: 'background.paper',
+        borderRadius: 2,
+        boxShadow: 24,
+        p: 2,
+      }}
+    >
+      <Card>
+        <CardMedia
+          component="img"
+          height="200"
+          image={events[expandedCard]?.imageUrl || 'defaultImageURL'}
+          alt={events[expandedCard]?.name}
+        />
+        <CardContent>
+  <Typography variant="h5" gutterBottom>
+    {events[expandedCard]?.name}
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    Venue: {events[expandedCard]?.venue}
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    City: {events[expandedCard]?.city}, {events[expandedCard]?.country}
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    Genre: {events[expandedCard]?.eventGenre}
+  </Typography>
+  <Typography variant="h6" sx={{ mt: 2 }}>
+    Group Member Availability:
+  </Typography>
+  {userNameList.map((name, index) => (
+    <Typography key={index} variant="body2" color="text.secondary">
+      - {name}: {name}
+    </Typography>
+  ))}
+</CardContent>
+
+        <CardActions>
+          <Button
+            size="small"
+            color="primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            component="a"
+            href={events[expandedCard]?.eventUrl}
           >
-            <Card>
-              <CardMedia
-                component="img"
-                height="200"
-                image={events[expandedCard]?.imageUrl || 'defaultImageURL'}
-                alt={events[expandedCard]?.name}
-              />
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  {events[expandedCard]?.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Venue: {events[expandedCard]?.venue}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  City: {events[expandedCard]?.city}, {events[expandedCard]?.country}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Genre: {events[expandedCard]?.eventGenre}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button
-                  size="small"
-                  color="primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  component="a"
-                  href={events[expandedCard]?.eventUrl}
-                >
-                  View Event
-                </Button>
-                <Button size="small" color="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-              </CardActions>
-            </Card>
-          </Box>
-        </Modal>
-      )}
+            View Event
+          </Button>
+          <Button size="small" color="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </CardActions>
+      </Card>
+    </Box>
+  </Modal>
+)}
+
 
       <Box
         sx={{
