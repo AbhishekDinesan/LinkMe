@@ -119,34 +119,6 @@ export default function GenericCard({
         </Typography>
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography
-            variant="h6"
-            style={{ textAlign: 'center', color: '#1976d2' }}
-          >
-            User Availability
-          </Typography>
-          {loading ? (
-            <Typography variant="body2" style={{ color: '#888' }}>
-              Loading...
-            </Typography>
-          ) : error ? (
-            <Typography variant="body2" style={{ color: 'red' }}>
-              {error}
-            </Typography>
-          ) : (
-            <List>
-              {availabilityData.map((user, index) => (
-                <ListItem key={index}>
-                  <ListItemText
-                    primary={user.name}
-                    secondary={user.isAvailable ? 'Available' : 'Not Available'}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          )}
-        </CardContent>
       </Collapse>
     </Card>
   );

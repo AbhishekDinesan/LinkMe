@@ -74,9 +74,31 @@ const EventsPage = () => {
     fetchEvents();
   };
 
-  const handleCardClick = (index) => {
+  const [groupAvailability, setGroupAvailability] = useState({});
+
+  const handleCardClick = async (index) => {
+    const selectedEvent = events[index];
+  const combinedStartDateTime = selectedEvent.combinedStartDateTime;
+  try {
+    const [date, time] = combinedStartDateTime.split("T");
+    const response = await axios.get('/api/fetch-events-group-id', {
+      headers: { 'Content-Type': 'application/json' },
+      params: {
+        group_id: Cookies.get('groupId'),
+        startTime: time,
+        startDate: date,
+        endTime: time,
+        endDate: date,
+      },
+    });
+    console.log("Response", response.data)
+    setGroupAvailability((prev) => ({
+      ...prev,
+      [index]: response.data.length == 0 ? ["available"]: ["not available"], // Store results for the specific event
+    }));
     setExpandedCard(index);
-  };
+  }catch(exception){console.log(exception)}
+};
 
   const handleClose = () => {
     setExpandedCard(null);
@@ -211,11 +233,23 @@ const EventsPage = () => {
   <Typography variant="h6" sx={{ mt: 2 }}>
     Group Member Availability:
   </Typography>
-  {userNameList.map((name, index) => (
-    <Typography key={index} variant="body2" color="text.secondary">
-      - {name}: {name}
-    </Typography>
-  ))}
+  {groupAvailability[expandedCard] ? (
+            groupAvailability[expandedCard].length > 0 ? (
+              groupAvailability[expandedCard].map((availability, index) => (
+                <Typography key={index} variant="body2" color="text.secondary">
+                  {availability}
+                </Typography>
+              ))
+            ) : (
+              <Typography variant="body2" color="text.secondary">
+                No availability information found.
+              </Typography>
+            )
+          ) : (
+            <Typography variant="body2" color="text.secondary">
+              Loading...
+            </Typography>
+          )}
 </CardContent>
 
         <CardActions>
