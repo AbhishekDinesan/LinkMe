@@ -16,6 +16,7 @@ import {
   CardActions,
 } from '@mui/material';
 import Cookies from 'js-cookie';
+const moment = require('moment-timezone')
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -56,14 +57,11 @@ const EventsPage = () => {
       const selectedDate = `${selectedYear}-${String(
         new Date(`${selectedMonth} 1`).getMonth() + 1
       ).padStart(2, '0')}-${selectedDay.padStart(2, '0')}T00:00:00Z`;
-
       const response = await axios.get('/api/fetch-start-date-events', {
         headers: { 'Content-Type': 'application/json' },
         params: { startDate: selectedDate, numEvents: 20 },
       });
-      console.log(response.data);
       groupId = await getGroupDataFromCookie();
-      console.log("Does the groupId persist" + groupId);
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -75,6 +73,30 @@ const EventsPage = () => {
   };
 
   const [groupAvailability, setGroupAvailability] = useState({});
+
+  const handleCalendar = async () =>{
+    try{
+      const [date, time] = events[expandedCard].combinedStartDateTime.split("T");
+      const combinedDateTime = `${date}T${time}`
+      const combinedEndDate = "2025-02-19T20:30:00"
+      console.log("Start", combinedDateTime)
+      console.log("End", combinedEndDate)
+    const formattedData = {
+      eventName: events[expandedCard].name,
+      eventDescription: "Added by LinkMe",
+      combinedStart:  combinedDateTime,
+      combinedEnd: combinedEndDate
+    }
+    const response = await axios.post('/api/create-event', formattedData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(response)
+  }catch(exception){
+    console.log(exception)
+  }
+  }
 
   const handleCardClick = async (index) => {
     const selectedEvent = events[index];
@@ -308,6 +330,9 @@ const EventsPage = () => {
             href={events[expandedCard]?.eventUrl}
           >
             View Event
+          </Button>
+          <Button size="small" olor="primary" onClick={handleCalendar}>
+            Add to Calendar
           </Button>
           <Button size="small" color="secondary" onClick={handleClose}>
             Close

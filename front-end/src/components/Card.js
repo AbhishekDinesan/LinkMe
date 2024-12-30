@@ -27,13 +27,13 @@ export default function GenericCard({
   const [availabilityData, setAvailabilityData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const [date, time] = combinedStartDateTime.split("T");
 
   const fetchGroupEvents = async () => {
     setLoading(true);
     try {
       console.log('Starting Combined Start Date', combinedStartDateTime);
       console.log('GroupId', groupId);
-      const [date, time] = combinedStartDateTime.split("T");
       const response = await axios.get('/api/fetch-events-group-id', {
         headers: { 'Content-Type': 'application/json' },
         params: {
@@ -103,7 +103,7 @@ export default function GenericCard({
           {name || 'Event Name'}
         </Typography>
         <Typography variant="body2" style={{ color: '#555' }}>
-          <strong>Starting Time:</strong> {combinedStartDateTime || 'TBD'}
+          <strong>Starting Time:</strong> {time|| 'TBD'}
         </Typography>
         <Typography variant="body2" style={{ color: '#555' }}>
           <strong>Venue:</strong> {venue || 'TBD'}
@@ -118,8 +118,7 @@ export default function GenericCard({
           <strong>Event Genre:</strong> {eventGenre || 'TBD'}
         </Typography>
       </CardContent>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-      </Collapse>
+      <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
     </Card>
   );
 }
