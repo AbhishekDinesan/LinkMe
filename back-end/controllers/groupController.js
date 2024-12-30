@@ -1,5 +1,6 @@
 const {createGroup} = require('../models/groupModel');
-const {fetchNameOfUsers, fetchUserIdFromName,fetchUsersInAGroup, fetchUserNamefromUserId} = require('../database/insertTable')
+const {fetchNameOfUsers, fetchUserIdFromName,fetchUsersInAGroup, fetchUserNamefromUserId, fetchEvents} = require('../database/insertTable');
+const { checkConflict, Interval } = require('../models/freeTime');
 
 exports.createGroups = async (req, res) => {
     try{
@@ -41,7 +42,36 @@ exports.fetchUsersInGroup = async(req,res) =>{
 
 exports.fetchNameFromUserId = async(req, res) => {
   const user_id = req.query.user_id;
-  console.log("User Id", req.query.user_id)
   const response = await fetchUserNamefromUserId(user_id)
   res.send(response);
+}
+
+exports.fetchEvents = async(req, res) => { // takes in a group id, returns False OR user_id's in violation
+  const group_id = req.query.group_id;
+  const startTime = req.query.startTime;
+  const startDate = req.query.startDate;
+  const endTime = req.query.endTime;
+  const endDate = req.query.endDate;
+
+  const response = await fetchUsersInAGroup(group_id)
+  const membersOfGroup = []
+  for (const row of response){
+    membersOfGroup.push(row.user_id);
+  }
+
+
+
+  const allEvents = []
+  for (const member of membersOfGroup){
+    const event = await fetchEvents(member)
+    allEvents.push(event)
+  }
+
+  const queryInterval = new Interval(
+          startDate, startTime,
+          endDate, endTime, 1
+  );
+  const result = await checkConflict(allEvents, queryInterval)
+  console.log("Check Conflict YIPEEEEE", result)
+  res.send(result)
 }

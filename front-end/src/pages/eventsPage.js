@@ -163,10 +163,10 @@ const EventsPage = () => {
                 eventGenre={event.eventGenre}
                 imageUrl={event.imageUrl || 'defaultImageURL'} // add a default image
                 userNames={(() => {
-                  console.log('userNameList:', userNameList); // Log the userNameList
                   return userNameList;
                 })()}
                 userIds={userIdList}
+                groupId={Cookies.get('groupId')}
               />
             </Box>
           )})}

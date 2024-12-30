@@ -39,7 +39,7 @@ const GroupCreationPage = () => {
         setAllUsers(response.data);  // Set all users here, for each user can you iterate over all events
         const startDate = new Date();
         const endDate = new Date();
-        endDate.setDate(startDate.getDate() + 14)
+        endDate.setDate(startDate.getDate() + 365)
         const response2 = await axios.get('/api/fetch-events', {
           params: {
             querystartDateTime: startDate,

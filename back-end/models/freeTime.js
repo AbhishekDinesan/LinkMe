@@ -1,42 +1,44 @@
 const dayjs = require('dayjs');
 
 class Interval {
-    constructor(startDate, startTime, endDate, endTime) {
-        this.startDateTime = dayjs(`${startDate} ${startTime}`);
-        this.endDateTime = dayjs(`${endDate} ${endTime}`);
-        console.log(`Created interval: ${this.startDateTime.format()} to ${this.endDateTime.format()}`);
+    constructor(startDate, startTime, endDate, endTime, user_id) {
+        this.startDateTime = dayjs(`${startDate} ${startTime}`).format('YYYY-MM-DDTHH:mm:ss');
+        this.endDateTime = dayjs(`${endDate} ${endTime}`).format('YYYY-MM-DDTHH:mm:ss');
+        this.user_id = user_id;
     }
 }
 
-function isOverlap(interval1, interval2) {
-    console.log(`Checking overlap between: ${interval1.startDateTime.format()} - ${interval1.endDateTime.format()} and ${interval2.startDateTime.format()} - ${interval2.endDateTime.format()}`);
+function isOverlap(queryPeriod, interval) {
+    const queryStart = dayjs(queryPeriod.startDateTime);
+    const queryEnd = dayjs(queryPeriod.endDateTime);
+    const intervalStart = dayjs(interval.startDateTime);
+    const intervalEnd = dayjs(interval.endDateTime);
+
     return (
-        interval1.startDateTime.isBefore(interval2.endDateTime) &&
-        interval2.startDateTime.isBefore(interval1.endDateTime
-    ));
+        queryStart.isBefore(intervalEnd) &&
+        intervalStart.isBefore(queryEnd)
+    );
+
 }
 
-function getOverlappingIntervals(queryPeriod, events_object) {
+function getOverlappingIntervals(events_object, queryPeriod) {
     const intervalList = [];
 
-    for (let event of events_object) {
-        if (event.start_time && event.end_time) {
-            const startDate = dayjs(event.start_time).format('YYYY-MM-DD');
-            const startTime = dayjs(event.start_time).format('HH:mm:ss');
-            const endDate = dayjs(event.end_time).format('YYYY-MM-DD');
-            const endTime = dayjs(event.end_time).format('HH:mm:ss');
-            const interval = new Interval(startDate, startTime, endDate, endTime);
-            intervalList.push(interval);
-        }   
+    console.log("events_object in getOverlappingIntervals", events_object)
+
+    for (const user of events_object){
+        for (let event of user) {
+            if (event.start_time && event.end_time) {
+                const startDate = dayjs(event.start_time).format('YYYY-MM-DD');
+                const startTime = dayjs(event.start_time).format('HH:mm:ss');
+                const endDate = dayjs(event.end_time).format('YYYY-MM-DD');
+                const endTime = dayjs(event.end_time).format('HH:mm:ss');
+                const interval = new Interval(startDate, startTime, endDate, endTime, event.user_id);
+                intervalList.push(interval);
+            }   
+        }
     }
-
-    // Sort intervals based on startDateTime
-    intervalList.sort((a, b) => a.startDateTime.diff(b.startDateTime));
-
-    console.log(`Query Interval: ${queryPeriod.startDateTime.format()} to ${queryPeriod.endDateTime.format()}`);
-
     const overlappingIntervals = [];
-
     for (let interval of intervalList) {
         if (isOverlap(queryPeriod, interval)) {
             overlappingIntervals.push(interval);
@@ -46,18 +48,9 @@ function getOverlappingIntervals(queryPeriod, events_object) {
     return overlappingIntervals;
 }
 
-function checkConflict(events_object) {
-    const hardCodedInterval = new Interval(
-        '2024-10-23', '00:00:00',
-        '2024-10-26', '11:46:48'
-    );
-
-    const overlappedIntervals = getOverlappingIntervals(hardCodedInterval, events_object);
-
-    console.log("These are the overlapped intervals:");
-    console.log(overlappedIntervals);
-
-    return overlappedIntervals.length ? overlappedIntervals : false;
+function checkConflict(events_object, query_interval) {
+    const overlappedIntervals = getOverlappingIntervals(events_object, query_interval);
+    return overlappedIntervals ? overlappedIntervals : false;
 }
 
 module.exports = {

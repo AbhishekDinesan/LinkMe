@@ -14,6 +14,7 @@ router.get('/fetch-generic-events', TMController.genericEvents) // make a new ti
 router.get('/fetch-start-date-events', TMController.queryEventsOnStartDate)
 router.get('/fetch-users-in-group', groupController.fetchUsersInGroup)
 router.get('/fetch-usernames-from-id', groupController.fetchNameFromUserId)
+router.get('/fetch-events-group-id', groupController.fetchEvents)
 
 
 module.exports = router;

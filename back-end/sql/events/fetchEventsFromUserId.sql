@@ -1,0 +1,1 @@
+SELECT * from events WHERE user_id = $1
