@@ -92,9 +92,13 @@ const EventsPage = () => {
       },
     });
     console.log("Response", response.data)
+    var names;
+    if (response.data.length != 0){
+       names = await processAvailability(response.data)
+    }
     setGroupAvailability((prev) => ({
       ...prev,
-      [index]: response.data.length == 0 ? ["available"]: ["not available"], // Store results for the specific event
+      [index]: response.data.length == 0 ? ["available"]: names, // Store results for the specific event
     }));
     setExpandedCard(index);
   }catch(exception){console.log(exception)}
@@ -102,6 +106,20 @@ const EventsPage = () => {
 
   const handleClose = () => {
     setExpandedCard(null);
+  };
+
+  const processAvailability = async (available) =>{
+    const arrayUsers = []
+    for (const element of available) {
+      const response = await axios.get("/api/fetch-usernames-from-id", {
+        headers: { 'Content-Type': 'application/json' },
+        params: {user_id: element.user_id},
+      })
+      arrayUsers.push(response)
+    }
+    const returnArray= []
+    returnArray.push(arrayUsers[0].data[0].name)
+    return returnArray
   };
 
   return (
@@ -231,25 +249,53 @@ const EventsPage = () => {
     Genre: {events[expandedCard]?.eventGenre}
   </Typography>
   <Typography variant="h6" sx={{ mt: 2 }}>
-    Group Member Availability:
+    Group Availability:
   </Typography>
   {groupAvailability[expandedCard] ? (
-            groupAvailability[expandedCard].length > 0 ? (
-              groupAvailability[expandedCard].map((availability, index) => (
-                <Typography key={index} variant="body2" color="text.secondary">
-                  {availability}
-                </Typography>
-              ))
-            ) : (
-              <Typography variant="body2" color="text.secondary">
-                No availability information found.
-              </Typography>
-            )
-          ) : (
-            <Typography variant="body2" color="text.secondary">
-              Loading...
-            </Typography>
-          )}
+  groupAvailability[expandedCard].length > 0 ? (
+    groupAvailability[expandedCard].map((availability, index) => (
+      !(availability.includes("available")) ? (
+        <Button
+          key={index}
+          variant="contained"
+          sx={{
+            backgroundColor: '#f44336',
+            color: '#fff',
+            mt: 1,
+            '&:hover': {
+              backgroundColor: '#e53935',
+            },
+          }}
+        >
+          Unavailable: {availability.replace('not available', '').trim()}
+        </Button>
+      ) : (
+        <Button
+          key={index}
+          variant="contained"
+          sx={{
+            backgroundColor: '#4caf50',
+            color: '#fff',
+            mt: 1,
+            '&:hover': {
+              backgroundColor: '#45a049',
+            },
+          }}
+        >
+          {availability}
+        </Button>
+      )
+    ))
+  ) : (
+    <Typography variant="body2" color="text.secondary">
+      No availability information found.
+    </Typography>
+  )
+) : (
+  <Typography variant="body2" color="text.secondary">
+    Loading...
+  </Typography>
+)}
 </CardContent>
 
         <CardActions>
