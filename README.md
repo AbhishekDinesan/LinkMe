@@ -1,80 +1,57 @@
 # LinkMe
 
-Making plans can be tough. Or at least I've heard.
+Making plans can be tough. Or at least I've heard 🥲
 
 LinkMe is a Full-stack Web Application designed to help you and your friends effortlessly find and schedule activities together.
-With seamless integration into your Google Calendar and access to events through TicketMaster, planning quality time with friends has never been easier.
 
 ## 🎥 Video Walkthrough
 
-Curious to see LinkMe in action? Check out the full walkthrough here: Watch the Video from 2024/12/31.
+<p align="center">
 
-https://www.youtube.com/watch?v=JdPL27TJK6c
+Curious to see LinkMe in action? Check out a walkthrough here (2024/12/31):
 
+[![LinkMe Walkthrough](https://img.youtube.com/vi/JdPL27TJK6c/0.jpg)](https://www.youtube.com/watch?v=JdPL27TJK6c)
 
-🚀 Features
+</p>
 
-- Group Planning: Create groups, compile everyone’s schedules, and plan events effortlessly.
+## 🚀 Features
 
-- Google Calendar Integration: Automatically sync calendars to find shared free time among group members.
+- **Group Planning:** Create groups, compile everyone’s schedules, and plan events effortlessly.
 
-- Event Discovery: Search for local events using the TicketMaster API and book activities directly.
+- **Google Calendar Integration:** Automatically sync calendars to find shared free time among group members.
 
-- User-Friendly Interface: Intuitive and visually appealing design using Material-UI.
+- **Event Discovery:** Search for local events using the TicketMaster API and add to Calendar
 
-- Secure Authentication: Leverages Google OAuth 2 for seamless and secure login.
+- **User-Friendly Interface:** Intuitive and visually appealing design using Material-UI.
+
+- **Secure Authentication:** Leverages Google OAuth 2 for seamless and secure login.
 
 
 ## 💻 Technology
 
-Frontend:
+### Frontend:
+- React
+- Material-UI
+- Axios
 
-React: For building an interactive and dynamic user interface.
+### Backend:
+- Node.js
+- Express
 
-Material-UI: For a polished, modern design.
+### Database:
+- SQL
+- Sequelize ORM
+- PostgreSQL
 
-
-React Router: For smooth navigation between pages.
-
-Axios: For efficient API communication.
-
-Backend:
-
-Node.js: For a robust and scalable server-side environment.
-
-Express: To handle API requests and server logic.
-
-Database:
-
-Lots, and lots of SQL Queries
-
-PostgreSQL: For reliable and powerful data management.
-
-Sequelize ORM: For simplified database interaction.
-
-External APIs:
-
-Google Calendar API: For calendar synchronization.
-
-Google OAuth 2: For secure user authentication.
-
-TicketMaster API: For discovering and hosting local events
-
-- **Frontend:** React, Material-UI, React Router, Axios
-- **Backend:** Node.js, Express
-- **Database:** PostgreSQL, Sequelize ORM
-- **Other stuff:** Google Calendar API, Google OAuth 2, TicketMaster API
-
+### Other stuff
+- Google Calendar API
+- Google OAuth 2
+- TicketMaster API
 
 ## Database Diagram
 
 ![alt text](image.png)
 
-## W.I.P
-1. Recongifuring fetchEvents to fetch on interval queries once clicking on a card
-2. find overlapping events, user associated, and map that onto the card
-3. add the add to calendar featuree
 
-🌟 Where do we go from here?
-
-Proprietary API.
+## 🌟 Next Steps
+Creating a proprietary API. As is, this project doesn't create much value as it relies on the TicketMaster API and the TM team could incorporate a feature similiar to this project. But by creating an API for small business availability (such as escape rooms, axe throwing etc.) where TM doesn't have event data, value can be created. From here, it would make sense to book/pay for events in the web app. Also, the app could look prettier, but that's not a priority.
