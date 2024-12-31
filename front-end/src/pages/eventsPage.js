@@ -54,9 +54,16 @@ const EventsPage = () => {
 
   const fetchEvents = async () => {
     try {
-      const selectedDate = `${selectedYear}-${String(
-        new Date(`${selectedMonth} 1`).getMonth() + 1
-      ).padStart(2, '0')}-${selectedDay.padStart(2, '0')}T00:00:00Z`;
+      const localDate = new Date(
+        selectedYear,
+        new Date(`${selectedMonth} 1`).getMonth(),
+        parseInt(selectedDay),
+        0, 0, 0
+      );
+      localDate.setDate(localDate.getDate() + 1)
+      const utcDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+      const selectedDate = utcDate.toISOString().split('.')[0] + 'Z';
+
       const response = await axios.get('/api/fetch-start-date-events', {
         headers: { 'Content-Type': 'application/json' },
         params: { startDate: selectedDate, numEvents: 20 },

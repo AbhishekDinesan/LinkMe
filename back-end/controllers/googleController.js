@@ -74,19 +74,25 @@ exports.createTokens = async (req, res, next) => {
 
   exports.createEvent = async (req, res, next) => {
     try {
-          const { eventName, eventDescription, startEvent, endEvent, startTime, endTime } = req.body;
+      const { eventName, eventDescription, combinedStart, combinedEnd } = req.body;
+
+      const startDateTime = new Date(combinedStart);
+      const endDateTime = new Date(combinedEnd);
+      
       const event = {
         summary: eventName,
         description: eventDescription,
         start: {
-          dateTime: `${startEvent}T${startTime}:00`,
-          timeZone: 'America/Toronto',
+          dateTime: startDateTime.toISOString(),
+          timeZone: 'America/New_York'
         },
         end: {
-          dateTime: `${endEvent}T${endTime}:00`,
-          timeZone: 'America/Toronto',
+          dateTime: endDateTime.toISOString(),
+          timeZone: 'America/New_York'
         },
       };
+  
+      console.log("Server-side event", event);
 
       oauth2Client.setCredentials(await oauth2Client.credentials);
 
