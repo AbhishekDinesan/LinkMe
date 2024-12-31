@@ -6,7 +6,7 @@ function extractEventPayload(event) {
         startingLocalDate: event.dates.start.localDate,
         startingDateTime: event.dates.start.dateTime,
         combinedStartDateTime: `${event.dates.start.localDate}T${event.dates.start.localTime || '00:00:00Z'}`,
-        venue: event._embedded.venues[0]?.name,
+        venue: event._embedded.venues[0]?.name || 'unknown',
         city: event._embedded.venues[0]?.city?.name,
         country: event._embedded.venues[0]?.country?.name,
         url: event.url,
