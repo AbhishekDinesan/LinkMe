@@ -85,7 +85,7 @@ const EventsPage = () => {
     try{
       const [date, time] = events[expandedCard].combinedStartDateTime.split("T");
       const combinedDateTime = `${date}T${time}`
-      const combinedEndDate = "2025-02-19T20:30:00"
+      const combinedEndDate = "2025-02-19T17:30:00"
       console.log("Start", combinedDateTime)
       console.log("End", combinedEndDate)
     const formattedData = {

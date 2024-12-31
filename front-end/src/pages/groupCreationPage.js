@@ -100,14 +100,7 @@ const GroupCreationPage = () => {
             />
 
             <BasicButton buttonName = "Create" redirect='eventsPage' onClick={handleClick} />  
-            <Button
-              variant="contained"
-              color="primary"
-              startIcon={<AddIcon />}
-              sx={{ px: 3, py: 1.5, fontWeight: 'bold', borderRadius: '8px' }}
-            >
-              Create
-            </Button>
+ 
           </Box>
 
           {selectedUsers.length > 0 && (
